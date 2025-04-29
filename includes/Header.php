@@ -12,7 +12,6 @@
             </form>
             <a href="../frames/Dashboard.php">Profile</a>
             <img class="hover:cursor-pointer" src="../assets/Icons/cart.png" alt="cartIcon">
-            <img class="hover:cursor-pointer" src="../assets//Icons/notif.png" alt="notifIcon">
         </div>
     </div>
     <div Class='flex justify-center gap-20 mt-3'>
