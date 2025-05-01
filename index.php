@@ -12,10 +12,10 @@
 <body>
     <!--This Handles the Sign in page Design-->
     <div class='flex flex-col'>
-      <div class='w-screen flex text-center justify-between border-b-1 px-8 pt-10 pb-5'>
+      <div class='w-screen flex text-center justify-between border-b-1 px-10 pt-10 pb-5'>
 
-          <h2 class='font-[Italiana] font-bold text-3xl'>
-            Nicole Store
+          <h2 class='font-[Italiana] font-bold text-4xl'>
+            Nicole's
           </h2>
           <div id="registerBtn" class='flex border w-[100px] bg-white text-black p-2 text-center 
           justify-center rounded-2xl hover:bg-[#1E1E1E] cursor-pointer hover:text-white'>

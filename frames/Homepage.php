@@ -6,6 +6,7 @@
     <title>Nicole Store</title>
     <?php
         include '../imports/extensions.php';
+        include './modals/HomepageModal/AddCart.php';
     ?>
 </head>
 <body>
@@ -34,8 +35,8 @@
                    
             </div>
             <div id="GCashImageCard" class="border border-black rounded-2xl w-[300px] h-80 bg-cover p-5 flex items-end text-sky-100" 
-             style="background-image: url('../assets/ProductImages/Gcash.jpg');">
-                <h1 class="font-bold font-sans text-2xl">Payment online <br> made easy <br> with GCASH</h1>
+             style="background-image: url('../assets/ProductImages/payment.jpg');">
+                <h1 class="font-bold font-sans text-2xl">Payment <br> over the counter <br> made easy</h1>
             </div>
         </div>
 
@@ -52,11 +53,12 @@
                 <div class="flex flex-col justify-end h-66 p-4">
                     <h2>Soy Sauce</h2>
                     <div class="flex justify-between">
-                        <div class="flex gap-2">
+                        <div class="flex gap-3">
                             <p class="text-red-600 line-through py-2">P100</p>
                             <p class="text-red-600 py-2">P80</p>
                         </div>
-                        <button class="w-20 h-md bg-[#1E1E1E] rounded-xl text-white hover:cursor-pointer">ADD</button>
+                        <button id="showaddCart" class="w-20 h-md bg-[#1E1E1E] rounded-xl text-white 
+                         hover:cursor-pointer">ADD</button>
                     </div>
                 </div>
 
@@ -79,7 +81,8 @@
                         <div class="flex gap-2">
                             <p class="text-red-600 py-2">P100</p>
                         </div>
-                        <button class="w-20 h-md bg-[#1E1E1E] rounded-xl text-white hover:cursor-pointer">ADD</button>
+                        <button id="showaddCart1" class="w-20 h-md bg-[#1E1E1E] rounded-xl text-white 
+                         hover:cursor-pointer">ADD</button>
                     </div>
                 </div>
                     
@@ -90,5 +93,6 @@
     </div>
 
     <?php include '../includes/Footer.php'; ?>
+    <?php include './HomepageScript/Homepagescript.php'; ?>
 </body>
 </html>

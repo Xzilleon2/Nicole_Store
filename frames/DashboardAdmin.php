@@ -47,8 +47,8 @@
                     </div>
                     <div class="absolute top-full right-0 rounded-lg p-3 bg-[#1E1E1E] shadow-md scale-y-0
                      group-hover:scale-y-100 origin-top duration-200">
-                        <button id="showInventoryTable" class="mx-1 my-2 hover:cursor-pointer">Inventory</button>
-                        <button id="showCustomerTable" class="mx-1 my-2 hover:cursor-pointer">Customers</button>
+                        <button id="showInventoryTable" class="mx-1 my-2 w-full text-start hover:cursor-pointer">Inventory</button>
+                        <button id="showCustomerTable" class="mx-1 my-2 w-full text-start hover:cursor-pointer">Customers</button>
                     </div>
                 </div>
             </div>
@@ -70,9 +70,9 @@
                 </thead>
                 <tbody class="h-full">
                     <tr class="bg-gray-100 h-20">
-                    <td class="p-3">Imported Soy Sauce</td>
-                    <td class="p-3 text-center">P1000</td>
-                    <td class="p-3 text-center">13</td>
+                    <td class="p-3 text-center">Soy Sauce All in one</td>
+                    <td class="p-3 text-center">P50</td>
+                    <td class="p-3 text-center">50</td>
                     <td class="p-3 text-center">1961</td>
                     <td class="p-3 flex justify-center gap-5">
                         <button class="bg-yellow-200 rounded-full p-3 w-[100px] border font-bold hover:cursor-pointer">Update</button>
@@ -89,16 +89,17 @@
             <table class="table-auto border-separate h-fit">
                 <thead class="bg-[#1E1E1E] text-white h-20">
                     <tr>
-                    <th class="w-xl">ID</th>
-                    <th class="w-sm">NAME</th>
-                    <th class="w-sm">EMAIL</th>
-                    <th class="w-sm">ADDRESS</th>
+                    <th class="w-sm">ID</th>
+                    <th class="w-xl">NAME</th>
+                    <th class="w-xl">EMAIL</th>
+                    <th class="w-xl">ADDRESS</th>
                     <th class="w-sm">Action</th>
                     </tr>
                 </thead>
                 <tbody class="h-full">
                     <tr class="bg-gray-100 h-20">
-                    <td class="p-3">Imported Soy Sauce</td>
+                    <td class="hidden">13</td>
+                    <td class="p-3 text-center">Imported Soy Sauce</td>
                     <td class="p-3 text-center">P1000</td>
                     <td class="p-3 text-center">13</td>
                     <td class="p-3 text-center">1961</td>
@@ -113,6 +114,7 @@
     </div>
 
     <?php include '../includes/Footer.php'; ?>
+    <!--Function for the modals of Admin Dashboard-->
     <?php include './AdminDashboardScript/AdminDashScript.php'; ?>
 
 </body>

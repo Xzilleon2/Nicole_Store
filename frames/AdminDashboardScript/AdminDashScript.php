@@ -1,4 +1,4 @@
-<!--Function for the modals of Dashboard-->
+<!--Function for the modals of Admin Dashboard-->
 <script>
     const EditProfileModal = document.getElementById('addProfileModal');
     const showEditProfile = document.getElementById('showEditProfile');

@@ -1,7 +1,7 @@
-<div Class='w-full flex flex-col text-center justify-center items-center border-b-1 px-15 pb-5'>
+<div Class='w-full flex flex-col text-center justify-center items-center border-b-1 px-15 pb-5 '>
     <div Class='flex w-fit px-10 gap-20'>
         <div Class='flex justify-center items-center py-5'>
-            <a href="../frames/Homepage.php"><h1 Class='font-[Italiana] text-3xl'>Nicole Store</h1></a>
+            <a href="../frames/Homepage.php"><h1 Class='font-[Italiana] font-bold text-5xl'>Nicole's</h1></a>
         </div>
         <div Class='flex items-center gap-10 w-fit px-10'>
             <form action="">
@@ -11,7 +11,7 @@
                 </div>
             </form>
             <a href="../frames/Dashboard.php">Profile</a>
-            <img class="hover:cursor-pointer" src="../assets/Icons/cart.png" alt="cartIcon">
+            <a href="../frames/Dashboard.php#CartTable"><img class="hover:cursor-pointer" src="../assets/Icons/cart.png" alt="cartIcon"></a>
         </div>
     </div>
     <div Class='flex justify-center gap-20 mt-3'>
@@ -31,5 +31,5 @@
         <a href="../frames/Homepage.php#DiscountedProduct">Discounts</a>
         <a href="../frames/Homepage.php#FeaturedProducts">Popular</a>
     </div>
-    
+
 </div>
