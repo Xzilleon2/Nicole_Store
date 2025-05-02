@@ -75,6 +75,7 @@
             <div class="border w-[300px] h-80 inset-0 bg-cover" 
              style="background-image: url('../assets/ProductImages/soysauce.jpg');"> <!--Task: Change Bg Image to a session variable for the loop-->
 
+                <!--Task: Change Test information to a session variable for the loop-->
                 <div class="flex flex-col justify-end h-full p-4">
                     <h2>Soy Sauce</h2>
                     <div class="flex justify-between">
