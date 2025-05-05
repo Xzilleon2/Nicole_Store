@@ -1,5 +1,5 @@
 <!--Add Customer Modal for the Admin Dashboard-->
-<div id="addCustomerModal" class="hidden fixed inset-0 flex justify-center items-center  text-black">
+<div id="addCustomerModal" class="hidden fixed inset-0 flex justify-center items-center z-10  text-black">
     <div class='w-[400px] flex flex-col'>
         <div class='flex flex-col bg-white border-1 border-black p-10 rounded'>
 

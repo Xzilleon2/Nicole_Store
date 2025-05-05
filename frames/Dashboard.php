@@ -40,10 +40,12 @@
                     hover:cursor-pointer">
                         <h1>Tables</h1>
                     </div>
-                    <div class="absolute w-[150px] top-full right-0 rounded-lg p-3 bg-[#1E1E1E] shadow-md scale-y-0
+                    <div class="absolute w-[160px] top-full right-0 rounded-lg p-3 bg-[#1E1E1E] shadow-md scale-y-0
                     group-hover:scale-y-100 origin-top duration-200">
-                        <button id="showCartTable" class="mx-1 my-1 w-full text-start hover:cursor-pointer">Cart</button>
-                        <button id="showPurchaseTable" class="mx-1 my-1 w-full text-start hover:cursor-pointer">Checkout History</button>
+                        <button id="showCartTable" class="px-1 my-1 w-full text-start cursor-pointer
+                         hover:bg-[#3C3C3C] duration-300 rounded-md">Cart</button>
+                        <button id="showPurchaseTable" class="px-1 my-1 w-full text-start cursor-pointer
+                         hover:bg-[#3C3C3C] duration-300 rounded-md">Checkout History</button>
                     </div>
                 </div>
 

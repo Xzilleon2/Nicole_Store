@@ -18,6 +18,9 @@
     const InventoryTable = document.getElementById('InventoryTable');
     const showInventoryTable = document.getElementById('showInventoryTable');
 
+    const ReservationTable = document.getElementById('ReservationTable');
+    const showReservationTable = document.getElementById('showReservationTable');
+
     showEditProfile.addEventListener('click', () =>{
         EditProfileModal.classList.remove('hidden');
     });
@@ -44,9 +47,16 @@
     showCustomerTable.addEventListener('click', ()=> {
         CustomerTable.classList.remove('hidden');
         InventoryTable.classList.add('hidden');
+        ReservationTable.classList.add('hidden');
     });
     showInventoryTable.addEventListener('click', ()=> {
         InventoryTable.classList.remove('hidden');
+        CustomerTable.classList.add('hidden');
+        ReservationTable.classList.add('hidden');
+    });
+    showReservationTable.addEventListener('click', ()=> {
+        ReservationTable.classList.remove('hidden');
+        InventoryTable.classList.add('hidden');
         CustomerTable.classList.add('hidden');
     });
 </script>

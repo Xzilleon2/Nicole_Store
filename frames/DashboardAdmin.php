@@ -35,8 +35,10 @@
                     </div>
                     <div class="absolute top-full right-0 rounded-lg p-3 bg-[#1E1E1E] shadow-md scale-y-0
                      group-hover:scale-y-100 origin-top duration-200">
-                        <button id="addProductBtn" class="mx-1 my-2 hover:cursor-pointer">Products</button>
-                        <button id="addCustomerBtn" class="mx-1 my-2 hover:cursor-pointer">Customers</button>
+                        <button id="addProductBtn" class="cursor-pointer px-1 my-2 w-full text-start
+                         hover:bg-[#3C3C3C] duration-300 rounded-md">Products</button>
+                        <button id="addCustomerBtn" class="cursor-pointer px-1 my-2 w-full text-start
+                         hover:bg-[#3C3C3C] duration-300 rounded-md">Customers</button>
                     </div>
                 </div>
 
@@ -47,8 +49,12 @@
                     </div>
                     <div class="absolute top-full right-0 rounded-lg p-3 bg-[#1E1E1E] shadow-md scale-y-0
                      group-hover:scale-y-100 origin-top duration-200">
-                        <button id="showInventoryTable" class="mx-1 my-2 w-full text-start hover:cursor-pointer">Inventory</button>
-                        <button id="showCustomerTable" class="mx-1 my-2 w-full text-start hover:cursor-pointer">Customers</button>
+                        <button id="showCustomerTable" class="px-1 my-2 w-full text-start cursor-pointer 
+                         hover:bg-[#3C3C3C] duration-300 rounded-md">Customers</button>
+                        <button id="showInventoryTable" class="px-1 my-2 w-full text-start cursor-pointer 
+                         hover:bg-[#3C3C3C] duration-300 rounded-md">Inventory</button>
+                        <button id="showReservationTable" class="px-1 my-2 w-full text-start cursor-pointer 
+                         hover:bg-[#3C3C3C] duration-300 rounded-md">Reservations</button>
                     </div>
                 </div>
             </div>
@@ -61,10 +67,10 @@
             <table class="table-auto border-separate h-fit">
                 <thead class="bg-[#1E1E1E] text-white h-20">
                     <tr>
-                    <th class="w-xl">Product</th>
-                    <th class="w-sm">Price</th>
-                    <th class="w-sm">Quantity</th>
-                    <th class="w-sm">Restocked Date</th>
+                    <th class="w-xl">Products</th>
+                    <th class="w-sm">Price Per Item</th>
+                    <th class="w-sm">Stack Quantity</th>
+                    <th class="w-sm">Date Updated</th>
                     <th class="w-sm">Action</th>
                     </tr>
                 </thead>
@@ -106,6 +112,37 @@
                     <td class="p-3 flex justify-center gap-5">
                         <button class="bg-yellow-200 rounded-full p-3 w-[100px] border font-bold hover:cursor-pointer">Update</button>
                         <button class="bg-red-700 rounded-full p-3 w-[100px] border font-bold hover:cursor-pointer">Delete</button>
+                    </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!--Table for Reservations-->
+        <!--Task: Loop each row from DB-->
+        <div id="ReservationTable" class="hidden border h-full p-3 flex  justify-center">
+            <table class="table-auto border-separate h-fit">
+                <thead class="bg-[#1E1E1E] text-white h-20">
+                    <tr>
+                    <th class="w-xl">Reservation Code</th>
+                    <th class="w-xl">Items</th>
+                    <th class="w-xl">Customer Name</th>
+                    <th class="w-sm">Total Price</th>
+                    <th class="w-sm">Expiration Date</th>
+                    <th class="w-sm">Action</th>
+                    </tr>
+                </thead>
+                <tbody class="h-full">
+                    <tr class="bg-gray-100 h-20">
+                    <td class="hidden">13</td>
+                    <td class="p-3 text-center">X1001-TEST</td>
+                    <td class="p-3 text-center">Soy, Rice, Vinegar</td>
+                    <td class="p-3 text-center">James</td>
+                    <td class="p-3 text-center">P100</td>
+                    <td class="p-3 text-center">2025-01-01</td>
+                    <td class="p-3 flex justify-center gap-5">
+                        <button class="bg-yellow-200 rounded-full p-3 w-[100px] border font-bold hover:cursor-pointer">Paid</button>
+                        <button class="bg-red-700 rounded-full p-3 w-[100px] border font-bold hover:cursor-pointer">Expired</button>
                     </td>
                     </tr>
                 </tbody>
