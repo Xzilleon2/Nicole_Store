@@ -89,7 +89,8 @@
             <table id="CartTable" class="table-auto border-separate h-fit">
                 <thead class="bg-[#1E1E1E] text-white h-20">
                     <tr>
-                    <th class="w-xl">Reservation <Code></Code></th>
+                    <th class="w-xl">Reservation</th>
+                    <th class="w-xl">Items</th>
                     <th class="w-sm">Total Price</th>
                     <th class="w-sm">Checkout Date</th>
                     <th class="w-sm">Status</th>
@@ -98,6 +99,7 @@
                 <tbody class="h-full">
                     <tr class="bg-gray-100 h-20">
                     <td class="p-3 text-center">TEST XXX-1111</td>
+                    <td class="p-3 text-center">Vinegar, Rice, Pork, Beans</td>
                     <td class="p-3 text-center">P1000</td>
                     <td class="p-3 text-center">01-01-2025</td>
                     <td class="p-3 text-center">Paid</td>

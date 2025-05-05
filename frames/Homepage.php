@@ -55,7 +55,8 @@
                     <div class="flex justify-between">
                         <div class="flex gap-3">
                             <p class="text-red-600 line-through py-2">P100</p>
-                            <p class="text-red-600 py-2">P80</p>
+                            <p class="text-green-900 font-semibold py-2">P80</p>
+                            <p class="py-2 font-semibold text-green-800">Stacks: 10</p>
                         </div>
                         <button id="showaddCart" class="w-20 h-md bg-[#1E1E1E] rounded-xl text-white 
                          hover:cursor-pointer">ADD</button>
@@ -80,7 +81,8 @@
                     <h2>Soy Sauce</h2>
                     <div class="flex justify-between">
                         <div class="flex gap-2">
-                            <p class="text-red-600 py-2">P100</p>
+                            <p class="text-green-900 font-semibold py-2">P100</p>
+                            <p class="py-2 font-semibold text-green-800">Stacks: 20</p>
                         </div>
                         <button id="showaddCart1" class="w-20 h-md bg-[#1E1E1E] rounded-xl text-white 
                          hover:cursor-pointer">ADD</button>
