@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 01, 2025 at 06:13 PM
+-- Generation Time: May 08, 2025 at 04:11 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -24,14 +24,103 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cart_items`
+-- Table structure for table `cart`
 --
 
-CREATE TABLE `cart_items` (
-  `cart_item_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `product_id` int(11) NOT NULL,
-  `quantity` int(11) NOT NULL DEFAULT 1
+CREATE TABLE `cart` (
+  `CART_ID` int(11) NOT NULL,
+  `CUSTOMER_ID` int(11) DEFAULT NULL,
+  `PRODUCT_ID` int(11) DEFAULT NULL,
+  `QUANTITY` int(11) DEFAULT NULL,
+  `DATE_ADDED` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `customers`
+--
+
+CREATE TABLE `customers` (
+  `CUSTOMER_ID` int(11) NOT NULL,
+  `NAME` varchar(255) DEFAULT NULL,
+  `EMAIL` varchar(255) DEFAULT NULL,
+  `PASSWORD` varchar(255) DEFAULT NULL,
+  `ADDRESS` varchar(255) DEFAULT NULL,
+  `CONTACT_NUMBER` varchar(50) DEFAULT NULL,
+  `ROLE` varchar(50) DEFAULT NULL,
+  `isACTIVE` tinyint(1) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `discounts`
+--
+
+CREATE TABLE `discounts` (
+  `DISCOUNT_ID` int(11) NOT NULL,
+  `PRODUCT_ID` int(11) DEFAULT NULL,
+  `DISCOUNT_PERCENT` decimal(5,2) DEFAULT NULL,
+  `DATE_START` date DEFAULT NULL,
+  `DATE_END` date DEFAULT NULL,
+  `STATUS` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `featureds`
+--
+
+CREATE TABLE `featureds` (
+  `FEATURED_ID` int(11) NOT NULL,
+  `PRODUCT_ID` int(11) DEFAULT NULL,
+  `isFeatured` tinyint(1) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `inventory`
+--
+
+CREATE TABLE `inventory` (
+  `INVENTORY_ID` int(11) NOT NULL,
+  `PRODUCT_ID` int(11) DEFAULT NULL,
+  `STACK_QUANTITY` int(11) DEFAULT NULL,
+  `RESTOCK_DATE` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `orders`
+--
+
+CREATE TABLE `orders` (
+  `ORDER_ID` int(11) NOT NULL,
+  `CUSTOMER_ID` int(11) DEFAULT NULL,
+  `ITEM_ID` int(11) DEFAULT NULL,
+  `CODE` varchar(100) DEFAULT NULL,
+  `QUANTITY` int(11) DEFAULT NULL,
+  `CLAIM_DATE` date DEFAULT NULL,
+  `STATUS` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `payment`
+--
+
+CREATE TABLE `payment` (
+  `PAYMENT_ID` int(11) NOT NULL,
+  `CUSTOMER_ID` int(11) DEFAULT NULL,
+  `RESERVATION_ID` int(11) DEFAULT NULL,
+  `TOTAL_PRICE` int(11) DEFAULT NULL,
+  `PAYMENT_DATE` date DEFAULT NULL,
+  `STATUS` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -41,63 +130,22 @@ CREATE TABLE `cart_items` (
 --
 
 CREATE TABLE `products` (
-  `product_id` int(11) NOT NULL,
-  `name` varchar(100) NOT NULL,
-  `description` text DEFAULT NULL,
-  `price` decimal(10,2) NOT NULL,
-  `discount_price` decimal(10,2) DEFAULT NULL,
-  `stock` int(11) DEFAULT 0,
-  `is_featured` tinyint(1) DEFAULT 0,
-  `image_url` varchar(255) DEFAULT NULL,
-  `created_at` datetime DEFAULT current_timestamp()
+  `PRODUCT_ID` int(11) NOT NULL,
+  `NAME` varchar(255) DEFAULT NULL,
+  `PRICE` int(11) DEFAULT NULL,
+  `CATEGORY` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `reservations`
+-- Table structure for table `reserveitems`
 --
 
-CREATE TABLE `reservations` (
-  `reservation_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `code` varchar(20) NOT NULL,
-  `total_amount` decimal(10,2) NOT NULL,
-  `status` enum('pending','claimed','expired') DEFAULT 'pending',
-  `created_at` datetime DEFAULT current_timestamp(),
-  `expires_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `reservation_items`
---
-
-CREATE TABLE `reservation_items` (
-  `reservation_item_id` int(11) NOT NULL,
-  `reservation_id` int(11) NOT NULL,
-  `product_id` int(11) NOT NULL,
-  `quantity` int(11) NOT NULL DEFAULT 1,
-  `price_at_reservation` decimal(10,2) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `users`
---
-
-CREATE TABLE `users` (
-  `user_id` int(11) NOT NULL,
-  `name` varchar(100) NOT NULL,
-  `email` varchar(100) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `Contact_Number` varchar(100) DEFAULT NULL,
-  `role` enum('customer','admin') DEFAULT 'customer',
-  `Img` varchar(255) DEFAULT NULL,
-  `is_active` tinyint(1) DEFAULT 1,
-  `created_at` datetime DEFAULT current_timestamp()
+CREATE TABLE `reserveitems` (
+  `ITEM_ID` int(11) NOT NULL,
+  `CART_ID` int(11) DEFAULT NULL,
+  `ORDER_ID` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -105,99 +153,119 @@ CREATE TABLE `users` (
 --
 
 --
--- Indexes for table `cart_items`
+-- Indexes for table `cart`
 --
-ALTER TABLE `cart_items`
-  ADD PRIMARY KEY (`cart_item_id`),
-  ADD KEY `user_id` (`user_id`),
-  ADD KEY `product_id` (`product_id`);
+ALTER TABLE `cart`
+  ADD PRIMARY KEY (`CART_ID`),
+  ADD KEY `CUSTOMER_ID` (`CUSTOMER_ID`),
+  ADD KEY `PRODUCT_ID` (`PRODUCT_ID`);
+
+--
+-- Indexes for table `customers`
+--
+ALTER TABLE `customers`
+  ADD PRIMARY KEY (`CUSTOMER_ID`);
+
+--
+-- Indexes for table `discounts`
+--
+ALTER TABLE `discounts`
+  ADD PRIMARY KEY (`DISCOUNT_ID`),
+  ADD KEY `PRODUCT_ID` (`PRODUCT_ID`);
+
+--
+-- Indexes for table `featureds`
+--
+ALTER TABLE `featureds`
+  ADD PRIMARY KEY (`FEATURED_ID`),
+  ADD KEY `PRODUCT_ID` (`PRODUCT_ID`);
+
+--
+-- Indexes for table `inventory`
+--
+ALTER TABLE `inventory`
+  ADD PRIMARY KEY (`INVENTORY_ID`),
+  ADD KEY `PRODUCT_ID` (`PRODUCT_ID`);
+
+--
+-- Indexes for table `orders`
+--
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`ORDER_ID`),
+  ADD KEY `CUSTOMER_ID` (`CUSTOMER_ID`),
+  ADD KEY `ITEM_ID` (`ITEM_ID`);
+
+--
+-- Indexes for table `payment`
+--
+ALTER TABLE `payment`
+  ADD PRIMARY KEY (`PAYMENT_ID`),
+  ADD KEY `CUSTOMER_ID` (`CUSTOMER_ID`),
+  ADD KEY `RESERVATION_ID` (`RESERVATION_ID`);
 
 --
 -- Indexes for table `products`
 --
 ALTER TABLE `products`
-  ADD PRIMARY KEY (`product_id`);
+  ADD PRIMARY KEY (`PRODUCT_ID`);
 
 --
--- Indexes for table `reservations`
+-- Indexes for table `reserveitems`
 --
-ALTER TABLE `reservations`
-  ADD PRIMARY KEY (`reservation_id`),
-  ADD UNIQUE KEY `code` (`code`),
-  ADD KEY `user_id` (`user_id`);
-
---
--- Indexes for table `reservation_items`
---
-ALTER TABLE `reservation_items`
-  ADD PRIMARY KEY (`reservation_item_id`),
-  ADD KEY `reservation_id` (`reservation_id`),
-  ADD KEY `product_id` (`product_id`);
-
---
--- Indexes for table `users`
---
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`user_id`),
-  ADD UNIQUE KEY `email` (`email`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `cart_items`
---
-ALTER TABLE `cart_items`
-  MODIFY `cart_item_id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `products`
---
-ALTER TABLE `products`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `reservations`
---
-ALTER TABLE `reservations`
-  MODIFY `reservation_id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `reservation_items`
---
-ALTER TABLE `reservation_items`
-  MODIFY `reservation_item_id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `users`
---
-ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `reserveitems`
+  ADD PRIMARY KEY (`ITEM_ID`),
+  ADD KEY `CART_ID` (`CART_ID`),
+  ADD KEY `ORDER_ID` (`ORDER_ID`);
 
 --
 -- Constraints for dumped tables
 --
 
 --
--- Constraints for table `cart_items`
+-- Constraints for table `cart`
 --
-ALTER TABLE `cart_items`
-  ADD CONSTRAINT `cart_items_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `cart_items_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`) ON DELETE CASCADE;
+ALTER TABLE `cart`
+  ADD CONSTRAINT `cart_ibfk_1` FOREIGN KEY (`CUSTOMER_ID`) REFERENCES `customers` (`CUSTOMER_ID`),
+  ADD CONSTRAINT `cart_ibfk_2` FOREIGN KEY (`PRODUCT_ID`) REFERENCES `products` (`PRODUCT_ID`);
 
 --
--- Constraints for table `reservations`
+-- Constraints for table `discounts`
 --
-ALTER TABLE `reservations`
-  ADD CONSTRAINT `reservations_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE;
+ALTER TABLE `discounts`
+  ADD CONSTRAINT `discounts_ibfk_1` FOREIGN KEY (`PRODUCT_ID`) REFERENCES `products` (`PRODUCT_ID`);
 
 --
--- Constraints for table `reservation_items`
+-- Constraints for table `featureds`
 --
-ALTER TABLE `reservation_items`
-  ADD CONSTRAINT `reservation_items_ibfk_1` FOREIGN KEY (`reservation_id`) REFERENCES `reservations` (`reservation_id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `reservation_items_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`) ON DELETE CASCADE;
+ALTER TABLE `featureds`
+  ADD CONSTRAINT `featureds_ibfk_1` FOREIGN KEY (`PRODUCT_ID`) REFERENCES `products` (`PRODUCT_ID`);
+
+--
+-- Constraints for table `inventory`
+--
+ALTER TABLE `inventory`
+  ADD CONSTRAINT `inventory_ibfk_1` FOREIGN KEY (`PRODUCT_ID`) REFERENCES `products` (`PRODUCT_ID`);
+
+--
+-- Constraints for table `orders`
+--
+ALTER TABLE `orders`
+  ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`CUSTOMER_ID`) REFERENCES `customers` (`CUSTOMER_ID`),
+  ADD CONSTRAINT `orders_ibfk_2` FOREIGN KEY (`ITEM_ID`) REFERENCES `products` (`PRODUCT_ID`);
+
+--
+-- Constraints for table `payment`
+--
+ALTER TABLE `payment`
+  ADD CONSTRAINT `payment_ibfk_1` FOREIGN KEY (`CUSTOMER_ID`) REFERENCES `customers` (`CUSTOMER_ID`),
+  ADD CONSTRAINT `payment_ibfk_2` FOREIGN KEY (`RESERVATION_ID`) REFERENCES `reserveitems` (`ITEM_ID`);
+
+--
+-- Constraints for table `reserveitems`
+--
+ALTER TABLE `reserveitems`
+  ADD CONSTRAINT `reserveitems_ibfk_1` FOREIGN KEY (`CART_ID`) REFERENCES `cart` (`CART_ID`),
+  ADD CONSTRAINT `reserveitems_ibfk_2` FOREIGN KEY (`ORDER_ID`) REFERENCES `orders` (`ORDER_ID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
