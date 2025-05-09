@@ -16,7 +16,7 @@
                 <input class='border rounded-md w-full my-2 p-2' type="text" name='Price' 
                 disabled=""/> <br/>
                 <label htmlFor="Quantity">Quantity</label> <br/>
-                <input class='border rounded-md w-full my-2 p-2' type="text" name='Quantity' value="1" 
+                <input class='border rounded-md w-full my-2 p-2' type="number" name='Quantity' value="1" 
                 required/> <br/>
                 <input class='bg-[#1E1E1E] text-white border rounded-md w-full p-2 
                 hover:bg-[#353434] cursor-pointer' type="submit" name='RegisterProduct' value="Done"/>

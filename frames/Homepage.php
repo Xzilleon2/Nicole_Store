@@ -45,7 +45,7 @@
         <h2 id="DiscountedProducts"  class="font-sans text-[30px]">Discounted Products</h2>
         <div class="w-full flex flex-wrap gap-5">
 
-            <div class="border w-[300px] h-80 inset-0 bg-cover" 
+            <div class="border w-[300px] h-80 inset-0 bg-cover hover:scale-110" 
              style="background-image: url('../assets/ProductImages/soysauce.jpg');"> <!--Task: Change Bg Image to a session variable for the loop-->
 
                 <!--Task: Change Test information to a session variable for the loop-->
@@ -73,7 +73,7 @@
         <div class="w-full flex flex-wrap gap-5">
 
             <!--Task: Change Test information to a session variable for the loop-->
-            <div class="border w-[300px] h-80 inset-0 bg-cover" 
+            <div class="border w-[300px] h-80 inset-0 bg-cover hover:scale-110" 
              style="background-image: url('../assets/ProductImages/soysauce.jpg');"> <!--Task: Change Bg Image to a session variable for the loop-->
 
                 <!--Task: Change Test information to a session variable for the loop-->

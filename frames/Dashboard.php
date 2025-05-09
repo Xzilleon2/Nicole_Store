@@ -89,10 +89,10 @@
             <table id="CartTable" class="table-auto border-separate h-fit">
                 <thead class="bg-[#1E1E1E] text-white h-20">
                     <tr>
-                    <th class="w-xl">Reservation</th>
+                    <th class="w-xl">CODE</th>
                     <th class="w-xl">Items</th>
                     <th class="w-sm">Total Price</th>
-                    <th class="w-sm">Checkout Date</th>
+                    <th class="w-sm">CLAIM Date</th>
                     <th class="w-sm">Status</th>
                     </tr>
                 </thead>
