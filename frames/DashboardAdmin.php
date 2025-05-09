@@ -67,19 +67,21 @@
             <table class="table-auto border-separate h-fit">
                 <thead class="bg-[#1E1E1E] text-white h-20">
                     <tr>
-                    <th class="w-xl">Products</th>
-                    <th class="w-sm">Price Per Item</th>
-                    <th class="w-sm">Stack Quantity</th>
-                    <th class="w-sm">Date Updated</th>
-                    <th class="w-sm">Action</th>
+                    <th class="w-xl">PRODUCTS</th>
+                    <th class="w-sm">ITEM PRICE</th>
+                    <th class="w-sm">STACK QUANTITY</th>
+                    <th class="w-sm">CATEGORY</th>
+                    <th class="w-sm">RESTACK DATE</th>
+                    <th class="w-sm">ACTION</th>
                     </tr>
                 </thead>
                 <tbody class="h-full">
                     <tr class="bg-gray-100 h-20">
-                    <td class="p-3 text-center">Soy Sauce All in one</td>
-                    <td class="p-3 text-center">P50</td>
+                    <td class="p-3 text-center">Garlic</td>
+                    <td class="p-3 text-center">P20</td>
                     <td class="p-3 text-center">50</td>
-                    <td class="p-3 text-center">1961</td>
+                    <td class="p-3 text-center">Spices</td>
+                    <td class="p-3 text-center">2025-01-20</td>
                     <td class="p-3 flex justify-center gap-5">
                         <button class="bg-yellow-200 rounded-full p-3 w-[100px] border font-bold hover:cursor-pointer">Update</button>
                         <button class="bg-red-700 rounded-full p-3 w-[100px] border font-bold hover:cursor-pointer">Delete</button>
@@ -99,16 +101,19 @@
                     <th class="w-xl">NAME</th>
                     <th class="w-xl">EMAIL</th>
                     <th class="w-xl">ADDRESS</th>
-                    <th class="w-sm">Action</th>
+                    <th class="w-xl">IMAGE</th>
+                    <th class="w-xl">STATUS</th>
+                    <th class="w-sm">ACTION</th>
                     </tr>
                 </thead>
                 <tbody class="h-full">
                     <tr class="bg-gray-100 h-20">
-                    <td class="hidden">13</td>
-                    <td class="p-3 text-center">Imported Soy Sauce</td>
-                    <td class="p-3 text-center">P1000</td>
                     <td class="p-3 text-center">13</td>
-                    <td class="p-3 text-center">1961</td>
+                    <td class="p-3 text-center">John Cena</td>
+                    <td class="p-3 text-center">YouCantSee@gmail.com</td>
+                    <td class="p-3 text-center">#13 Paris street Davao City</td>
+                    <td class="p-3 text-center">Img.jpg</td>
+                    <td class="p-3 text-center">ACTIVATED</td>
                     <td class="p-3 flex justify-center gap-5">
                         <button class="bg-yellow-200 rounded-full p-3 w-[100px] border font-bold hover:cursor-pointer">Update</button>
                         <button class="bg-red-700 rounded-full p-3 w-[100px] border font-bold hover:cursor-pointer">Delete</button>
@@ -124,12 +129,13 @@
             <table class="table-auto border-separate h-fit">
                 <thead class="bg-[#1E1E1E] text-white h-20">
                     <tr>
-                    <th class="w-xl">Reservation Code</th>
-                    <th class="w-xl">Items</th>
-                    <th class="w-xl">Customer Name</th>
-                    <th class="w-sm">Total Price</th>
-                    <th class="w-sm">Expiration Date</th>
-                    <th class="w-sm">Action</th>
+                    <th class="w-xl">RESERVATION CODE</th>
+                    <th class="w-xl">ITEMS</th>
+                    <th class="w-xl">CUSTOMER NAME</th>
+                    <th class="w-sm">TOTAL PRICE</th>
+                    <th class="w-sm">RESERVE UNTIL</th>
+                    <th class="w-sm">STATUS</th>
+                    <th class="w-sm">ACTION</th>
                     </tr>
                 </thead>
                 <tbody class="h-full">
@@ -140,6 +146,7 @@
                     <td class="p-3 text-center">James</td>
                     <td class="p-3 text-center">P100</td>
                     <td class="p-3 text-center">2025-01-01</td>
+                    <td class="p-3 text-center">PAID</td>
                     <td class="p-3 flex justify-center gap-5">
                         <button class="bg-yellow-200 rounded-full p-3 w-[100px] border font-bold hover:cursor-pointer">Paid</button>
                         <button class="bg-red-700 rounded-full p-3 w-[100px] border font-bold hover:cursor-pointer">Expired</button>

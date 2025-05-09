@@ -61,7 +61,6 @@
                     <tr>
                     <th class="w-[100px]">Select</th>
                     <th class="w-xl">Product</th>
-                    <th class="w-sm">Price</th>
                     <th class="w-sm">Quantity</th>
                     <th class="w-sm">Date Added</th>
                     <th class="w-sm">Action</th>
@@ -71,7 +70,6 @@
                     <tr class="bg-gray-100 h-20">
                     <td class="p-3 text-center"><input id="cartCheckbox" class="h-5 w-full" type="checkbox"></td>
                     <td class="p-3 text-center">Imported Soy Sauce</td>
-                    <td class="p-3 text-center">P1000</td>
                     <td class="p-3 text-center">13</td>
                     <td class="p-3 text-center">1961</td>
                     <td class="p-3 flex justify-center gap-5">
