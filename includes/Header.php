@@ -27,6 +27,7 @@
                 </div>
             </form>
             <a href="../frames/Dashboard.php">Profile</a>
+            <a href="../Functions/Logout.php">Logout</a>
             <a href="../frames/Dashboard.php#CartTable"><img class="cursor-pointer hover:scale-150" src="../assets/Icons/cart.png" alt="cartIcon"></a>
         </div>
     </div>

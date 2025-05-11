@@ -35,13 +35,19 @@
           <div class='flex flex-col w-lg'>
 
             <p class='font-bold my-3'>Sign in to Continue</p>
-            <form action="" method='POST'>
+            <form action="./Functions/Authentication.php" method='POST'>
               <label htmlFor="email">Email Address</label> <br />
               <input class='border p-3 my-3 w-full rounded-md '
                type="email" name="email" required/> <br />
               <label htmlFor="password">Password</label> <br />
               <input class='border  p-3 my-3 w-full rounded-md '
                type="password" name="password" required /> <br />
+
+              <p class="mb-3 text-red-500"><?php if(isset($_SESSION['Logmessage'])){
+                      echo $_SESSION['Logmessage'];
+                      unset($_SESSION['Logmessage']);
+                  } ?>
+              </p>
 
               <div class='flex justify-between px-4 py-2'>
                 <div class='flex content-center'>
@@ -54,7 +60,7 @@
               </div>
               <input class='bg-[#1E1E1E] text-white rounded-2xl w-full text-[20px] font-bold
               my-2 py-3  hover:bg-[#353434] cursor-pointer' 
-               type="submit" name="sign_in" value='Sign in' />
+               type="submit" name="Sign_in" value='Sign in' />
             </form>
 
           </div>  
