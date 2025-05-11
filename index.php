@@ -1,3 +1,9 @@
+<?php 
+  session_start();
+  include './imports/DBConnection.php';
+  include './Functions/Authentication.php';
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
