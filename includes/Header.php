@@ -23,7 +23,7 @@
             <form action="">
                 <div Class='border flex w-full md:w-3xl h-15 rounded-4xl px-5'>
                     <input Class='w-full h-full focus:border-none outline-none' type="text" placeholder="Find more Products"/>
-                    <input type="submit" value="Search"/>
+                    <input class='hover:cursor-pointer' type="submit" value="Search"/>
                 </div>
             </form>
             <a href="../frames/Dashboard.php">Profile</a>
