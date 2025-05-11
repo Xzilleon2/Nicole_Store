@@ -1,8 +1,5 @@
-<?php 
+<?php
   session_start();
-  include './imports/DBConnection.php';
-  include './Functions/Authentication.php';
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,8 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nicole Store</title>
     <?php
-      include './imports/extensions.php';
-      include './frames/modals/Signup.php';
+      include __DIR__ . '/imports/extensions.php';
+      include __DIR__ . '/frames/modals/Signup.php';
     ?>
 </head>
 <body>
@@ -35,7 +32,8 @@
           <div class='flex flex-col w-lg'>
 
             <p class='font-bold my-3'>Sign in to Continue</p>
-            <form action="./Functions/Authentication.php" method='POST'>
+
+            <form action="./Functions/IndexFunctions/Authentication.php" method='POST'>
               <label htmlFor="email">Email Address</label> <br />
               <input class='border p-3 my-3 w-full rounded-md '
                type="email" name="email" required/> <br />
@@ -52,7 +50,7 @@
               <div class='flex justify-between px-4 py-2'>
                 <div class='flex content-center'>
                   <input class='size-7 mx-2 accent-black' type="checkbox" name="checkbox"/>
-                  <p class='font-small text-black'>Stay signed in</p>
+                  <p class='font-small text-black'>Remember me</p>
                 </div>
                 <p class='text-[#464545] font-normal hover:text-[#1d1c1c]'>
                   <a href="">Forgot Password?</a>

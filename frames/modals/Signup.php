@@ -11,12 +11,7 @@
                 
                 <p class='mb-3'>Registration is easy</p>
                 
-                <p class="mb-3 text-red-500"><?php if(isset($_SESSION['Regmessage'])){
-                        echo $_SESSION['Regmessage'];
-                        unset($_SESSION['Regmessage']);
-                    } ?>
-                </p>
-                <form action="../Functions/Regstration.php" method='POST'>
+                <form action="./Functions/IndexFunctions/Registration.php" method='POST'>
                     <label htmlFor="emailreg">Email address</label> <br />
                     <input class='border rounded-md w-full my-2 p-2' type="email" name='emailreg'
                     required/> <br/>
@@ -29,6 +24,11 @@
                     <label htmlFor="Confirmpasswordreg">Confirm Password</label> <br/>
                     <input class='border rounded-md w-full my-2 p-2' type="password" name='Confirmpasswordreg' 
                     required/> <br/>
+                    <p class="mb-3 text-red-500"><?php if(isset($_SESSION['Regmessage'])){
+                        echo $_SESSION['Regmessage'];
+                        unset($_SESSION['Regmessage']);
+                    } ?>
+                    </p>
                     <div class='w-full mt-5 text-center'>
                         <p>By clicking Sign up you agree to
                             Nicole Store <a class=' font-bold' href="">Terms of Use</a> and &nbsp;

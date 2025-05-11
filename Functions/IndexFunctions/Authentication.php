@@ -1,4 +1,7 @@
 <?php
+    session_start();
+    include __DIR__ . '../../../imports/DBConnection.php';
+
     //Login Process
     if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['Sign_in'])){
         $Email = $_POST['email'];
@@ -25,14 +28,14 @@
 
                     echo "<script>
                         alert('Login Successful');
-                        window.location.href = '../frames/Homepage.php';
+                        window.location.href = '../../frames/Homepage.php';
                         </script>";
                         exit();             
                 }
             }else{
                 $_SESSION['Logmessage'] = 'Incorrect Email or Password';
                 echo "<script>
-                    window.location.href = '../index.php';
+                    window.location.href = '../../index.php';
                     </script>";
                     exit();
             }
