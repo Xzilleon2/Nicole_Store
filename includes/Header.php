@@ -19,16 +19,18 @@
         <div Class='flex justify-center items-center py-5'>
             <a href="../frames/Homepage.php"><h1 Class='font-[Italiana] font-bold text-5xl'>Nicole's</h1></a>
         </div>
-        <div Class='flex items-center gap-10 w-fit px-10'>
+        <div Class='flex items-center gap-6 w-fit px-10'>
             <form action="">
                 <div Class='border flex w-full md:w-3xl h-15 rounded-4xl px-5'>
                     <input Class='w-full h-full focus:border-none outline-none' type="text" placeholder="Find more Products"/>
                     <input class='hover:cursor-pointer' type="submit" value="Search"/>
                 </div>
             </form>
-            <a href="../frames/Dashboard.php">Profile</a>
-            <a href="../Functions/Logout.php">Logout</a>
-            <a href="../frames/Dashboard.php#CartTable"><img class="cursor-pointer hover:scale-150" src="../assets/Icons/cart.png" alt="cartIcon"></a>
+            <a class="rounded-full font-bold bg-blue-300 h-10 flex items-center justify-center w-[40px]" 
+             href="../frames/Dashboard.php"><?php echo $_SESSION['profname'] ?></a>
+            <a href="../frames/Dashboard.php#CartTable"><img class="cursor-pointer hover:scale-150"
+             src="../assets/Icons/cart.png" alt="cartIcon"></a>
+            <a class="font-semibold" href="../Functions/Logout.php">Logout</a>
         </div>
     </div>
     <div Class='flex justify-center items-center gap-20 mt-3'>

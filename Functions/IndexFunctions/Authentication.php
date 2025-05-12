@@ -1,6 +1,6 @@
 <?php
-    session_start();
-    include __DIR__ . '../../../imports/DBConnection.php';
+session_start();
+include __DIR__ . '../../../imports/DBConnection.php';
 
     //Login Process
     if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['Sign_in'])){
@@ -24,7 +24,10 @@
                 if(password_verify($Password, $row['password'])){
                     $_SESSION['email'] = $row['email'];
                     $_SESSION['name'] = $row['name'];
+                    $_SESSION['profname'] = strtoupper(substr(trim($row['name']), 0, 1));
                     $_SESSION['role'] = $row['role'];
+                    $_SESSION['Contact_Number'] = $row['Contact_Number'];
+                    $_SESSION['user_id'] = $row['user_id'];
 
                     echo "<script>
                         alert('Login Successful');

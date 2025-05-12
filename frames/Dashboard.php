@@ -1,3 +1,11 @@
+<?php 
+session_start();
+// Check if user is logged in
+if (!isset($_SESSION['email'])) {
+    header("Location: ../index.php");
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,15 +27,15 @@
         <div class="flex justify-between w-full h-30 p-5">
 
             <div class="flex w-sm gap-3 p-1">
-                <div class=" w-[100px] flex items-center justify-center text-center">
-                    <h1>IMAGE</h1>
+                <div class=" w-[100px] bg-blue-300 rounded-full h-20 text-2xl font-bold flex items-center justify-center text-center">
+                    <h1><?php echo $_SESSION['profname'] ?></h1>
                 </div>
                 <div class="w-full flex flex-col justify-center">
                     <h2 class="font-bold text-2xl">User One</h2>
                     <p id="showEditProfile" class="underline w-[80px] hover:cursor-pointer">Edit Profile</p>
                 </div>
             </div>
-
+            
             <div class="flex gap-5 text-white border-black items-center">
                 <div id="showCheckout" class="border rounded-full w-[130px] h-10 bg-[#1E1E1E] place-self-center flex items-center text-center justify-center
                 hover:cursor-pointer">

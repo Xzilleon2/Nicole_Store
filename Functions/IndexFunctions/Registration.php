@@ -1,6 +1,6 @@
 <?php
-    session_start();
-    include __DIR__ . '../../../imports/DBConnection.php';
+session_start();
+include __DIR__ . '../../../imports/DBConnection.php';
 
     //Registration Process
     if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['Sign_up'])){
