@@ -1,10 +1,10 @@
 <!--Edit Profile Modal for the User-->
-<div id="addProfileModal" class="hidden fixed inset-0 flex justify-center items-center z-10  text-black z-10">
+<div id="editProfileModal" class="hidden fixed inset-0 flex justify-center items-center z-10  text-black z-10">
     <div class='w-[400px] flex flex-col'>
         <div class='flex flex-col bg-white border-1 border-black p-10 rounded'>
 
             <div class='w-full flex justify-between text-center items-center'>
-                <p class='font-bold text-[20px]'>Register Customer</p>
+                <p class='font-bold text-[20px]'>Edit Profile</p>
                 <button id="closeModalProfile" class='text-xl hover:cursor-pointer'>X</button>
             </div>
             

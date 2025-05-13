@@ -1,6 +1,6 @@
 <!--Function for the modals of Dashboard-->
 <script>
-    const EditProfileModal = document.getElementById('addProfileModal');
+    const EditProfileModal = document.getElementById('editProfileModal');
     const showEditProfile = document.getElementById('showEditProfile');
     const closeEditProfile = document.getElementById('closeModalProfile');
 
