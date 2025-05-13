@@ -22,7 +22,7 @@ include __DIR__ . '../../../imports/DBConnection.php';
     $hashed_password = password_hash($Password, PASSWORD_DEFAULT);
 
     //Preparing the Query
-    $RegisterQuery = 'INSERT INTO users(email, name, password, role) VALUES (?, ?, ?, ?)';
+    $RegisterQuery = 'INSERT INTO customers(EMAIL, NAME, PASSWORD, ROLE) VALUES (?, ?, ?, ?)';
     $stmt = $conn->prepare($RegisterQuery);
 
     //Validating if No errors

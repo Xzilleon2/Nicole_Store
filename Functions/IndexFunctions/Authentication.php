@@ -9,7 +9,7 @@ include __DIR__ . '../../../imports/DBConnection.php';
 
 
         //Preparing the Query
-        $LoginQuery = 'SELECT * FROM users WHERE email = ?';
+        $LoginQuery = 'SELECT * FROM customers WHERE EMAIL = ?';
         $stmt = $conn->prepare($LoginQuery);
 
         //Validating if No errors
@@ -21,13 +21,13 @@ include __DIR__ . '../../../imports/DBConnection.php';
             if($userInfoResult->num_rows > 0){
                 $row = $userInfoResult->fetch_assoc();
 
-                if(password_verify($Password, $row['password'])){
-                    $_SESSION['email'] = $row['email'];
-                    $_SESSION['name'] = $row['name'];
-                    $_SESSION['profname'] = strtoupper(substr(trim($row['name']), 0, 1));
-                    $_SESSION['role'] = $row['role'];
-                    $_SESSION['Contact_Number'] = $row['Contact_Number'];
-                    $_SESSION['user_id'] = $row['user_id'];
+                if(password_verify($Password, $row['PASSWORD'])){
+                    $_SESSION['email'] = $row['EMAIL'];
+                    $_SESSION['name'] = $row['NAME'];
+                    $_SESSION['profname'] = strtoupper(substr(trim($row['NAME']), 0, 1));
+                    $_SESSION['role'] = $row['ROLE'];
+                    $_SESSION['Contact_Number'] = $row['CONTACT_NUMBER'];
+                    $_SESSION['user_id'] = $row['CUSTOMER_ID'];
 
                     echo "<script>
                         alert('Login Successful');

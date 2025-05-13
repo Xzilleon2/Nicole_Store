@@ -31,7 +31,7 @@ if (!isset($_SESSION['email'])) {
                     <h1><?php echo $_SESSION['profname'] ?></h1>
                 </div>
                 <div class="w-full flex flex-col justify-center">
-                    <h2 class="font-bold text-2xl">User One</h2>
+                    <h2 class="font-bold text-2xl"><?php echo $_SESSION['name'] ?></h2>
                     <p id="showEditProfile" class="underline w-[80px] hover:cursor-pointer">Edit Profile</p>
                 </div>
             </div>

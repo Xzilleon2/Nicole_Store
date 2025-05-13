@@ -10,15 +10,18 @@
             
             <p class='mb-3'>Fill all the required information</p>
 
-            <form action="" method='POST'>
+            <form action="../Functions/AdminFunctions/AddProduct.php" method='POST' enctype="multipart/form-data">
                 <label htmlFor="productName">Product Name</label> <br />
-                <input class='border rounded-md w-full my-2 p-2' type="text" name='productName'
+                <input class='border rounded-md w-full my-2 p-2' type="text" name='ProductName'
                 required/> <br/>
                 <label htmlFor="ProductPrice">Price</label> <br/>
                 <input class='border rounded-md w-full my-2 p-2' type="text" name='ProductPrice' 
                 required/> <br/>
                 <label htmlFor="ProductQuantity">Quantity</label> <br/>
                 <input class='border rounded-md w-full my-2 p-2' type="text" name='ProductQuantity' 
+                required/> <br/>
+                <label htmlFor="ProductCategory">Category</label> <br/>
+                <input class='border rounded-md w-full my-2 p-2' type="text" name='ProductCategory' 
                 required/> <br/>
                 <label htmlFor="ProductImage">Image</label> <br/>
                 <input class='border rounded-md my-2 p-2 hover:cursor-pointer' type="file" name='ProductImage' 
