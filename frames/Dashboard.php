@@ -71,72 +71,76 @@ if (!isset($_SESSION['email'])) {
 
         <!--Table for Cart items-->
         <div id="CartTable" class="border h-full p-3 flex flex-col">
-            <table id="CartTable" class="table-auto border-separate h-fit">
-                <thead class="bg-[#1E1E1E] text-white h-20">
-                    <tr>
-                    <th class="w-[100px]">Select</th>
-                    <th class="w-xl">PRODUCT</th>
-                    <th class="w-sm">QUANTITY</th>
-                    <th class="w-sm">TOTAL PRICE</th>
-                    <th class="w-sm">DATE ADDED</th>
-                    <th class="w-sm">Action</th>
-                    </tr>
-                </thead>
-                <tbody class="h-full overflow-y-scroll">
-                    <?php while ($row = $getCart->fetch_assoc()): ?>
-                    <tr class="bg-gray-100 h-20">
-                        <td class="p-3 text-center">
-                            <input class="h-5 w-full" type="checkbox" name="selected_cart[]" value="<?= $row['CART_ID'] ?>">
-                        </td>
-                        <td class="uppercase p-3 text-center"><?= htmlspecialchars($row['NAME']) ?></td>
-                        <td class="p-3 text-center"><?= $row['QUANTITY'] ?></td>
-                        <td class="p-3 text-center"><?= $row['TOTAL_PRICE'] ?></td>
-                        <td class="p-3 text-center"><?= $row['DATE_ADDED'] ?></td>
-                        <td class="p-3 flex justify-center gap-5">
-                            <form action="updateCart.php" method="POST" class="inline">
-                                <input type="hidden" name="cart_id" value="<?= $row['CART_ID'] ?>">
-                                <button type="submit" class="bg-yellow-200 rounded-full p-3 w-[100px] border font-bold hover:cursor-pointer">Update</button>
-                            </form>
-                            <form action="deleteCart.php" method="POST" class="inline">
-                                <input type="hidden" name="cart_id" value="<?= $row['CART_ID'] ?>">
-                                <button type="submit" class="bg-red-700 rounded-full p-3 w-[100px] border font-bold hover:cursor-pointer text-white">Delete</button>
-                            </form>
-                        </td>
-                    </tr>
-                    <?php endwhile; ?>
-                </tbody>
-            </table>
+            <div class="w-full overflow-x-auto">
+                <table id="CartTable" class="table-auto border-separate h-fit">
+                    <thead class="bg-[#1E1E1E] text-white h-20">
+                        <tr>
+                        <th class="w-[100px]">Select</th>
+                        <th class="w-xl">PRODUCT</th>
+                        <th class="w-sm">QUANTITY</th>
+                        <th class="w-sm">TOTAL PRICE</th>
+                        <th class="w-sm">DATE ADDED</th>
+                        <th class="w-sm">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody class="h-full overflow-y-scroll">
+                        <?php while ($row = $getCart->fetch_assoc()): ?>
+                        <tr class="bg-gray-100 h-20">
+                            <td class="p-3 text-center">
+                                <input class="h-5 w-full" type="checkbox" name="selected_cart[]" value="<?= $row['CART_ID'] ?>">
+                            </td>
+                            <td class="uppercase p-3 text-center"><?= htmlspecialchars($row['NAME']) ?></td>
+                            <td class="p-3 text-center"><?= $row['QUANTITY'] ?></td>
+                            <td class="p-3 text-center"><?= $row['TOTAL_PRICE'] ?></td>
+                            <td class="p-3 text-center"><?= $row['DATE_ADDED'] ?></td>
+                            <td class="p-3 flex justify-center gap-5">
+                                <form action="updateCart.php" method="POST" class="inline">
+                                    <input type="hidden" name="cart_id" value="<?= $row['CART_ID'] ?>">
+                                    <button type="submit" class="bg-yellow-200 rounded-full p-3 w-[100px] border font-bold hover:cursor-pointer">Update</button>
+                                </form>
+                                <form action="deleteCart.php" method="POST" class="inline">
+                                    <input type="hidden" name="cart_id" value="<?= $row['CART_ID'] ?>">
+                                    <button type="submit" class="bg-red-700 rounded-full p-3 w-[100px] border font-bold hover:cursor-pointer text-white">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                        <?php endwhile; ?>
+                    </tbody>
+                </table>
+            </div>
+
         </div>
 
         <!--Table for Purchased Products-->
-        <div id="PurchaseTable" class="hidden h-full border p-3 flex  justify-center">
-            <table id="CartTable" class="table-auto border-separate h-fit">
-                <thead class="bg-[#1E1E1E] text-white h-20">
-                    <tr>
-                    <th class="w-xl">CODE</th>
-                    <th class="w-xl">ITEMS</th>
-                    <th class="w-sm">QUANTITY</th>
-                    <th class="w-sm">UNIT PRICE</th>
-                    <th class="w-sm">TOTAL PRICE</th>
-                    <th class="w-sm">CLAIM DATE</th>
-                    <th class="w-sm">Status</th>
-                    </tr>
-                </thead>
-                <tbody class="h-full overflow-y-scroll">
-                    <?php while ($row1 = $getCheckout->fetch_assoc()): ?>
-                        <tr class="bg-gray-100 h-20">
-                            <td class="uppercase p-3 text-center"><?= htmlspecialchars($row1['ORDER_CODE']) ?></td>
-                            <td class="uppercase p-3 text-center"><?= htmlspecialchars($row1['PRODUCT_NAME']) ?></td>
-                            <td class="p-3 text-center"><?= $row1['QUANTITY'] ?></td>
-                            <td class="p-3 text-center">₱<?= number_format($row1['PRICE_PER_ITEM'], 2) ?></td>
-                            <td class="p-3 text-center">₱<?= number_format($row1['TOTAL_ITEM_PRICE'], 2) ?></td>
-                            <td class="p-3 text-center"><?= $row1['CLAIM_DATE'] ?></td>
-                            <td class="p-3 text-center"><?= $row1['STATUS'] ?></td>
+        <div id="PurchaseTable" class="hidden h-xl max-h-xl border p-3 flex justify-center overflow-x-auto">
+            <div class="w-full overflow-x-auto">
+                <table class="table-auto border-separate h-sm">
+                    <thead class="bg-[#1E1E1E] text-white h-20">
+                        <tr>
+                            <th class="w-xl">CODE</th>
+                            <th class="w-xl">ITEMS</th>
+                            <th class="w-sm">QUANTITY</th>
+                            <th class="w-sm">UNIT PRICE</th>
+                            <th class="w-sm">TOTAL PRICE</th>
+                            <th class="w-sm">CLAIM DATE</th>
+                            <th class="w-sm">Status</th>
                         </tr>
-                    <?php endwhile; ?>
-                </tbody>
-
-            </table>
+                    </thead>
+                    <tbody class="h-full">
+                        <?php while ($row1 = $getCheckout->fetch_assoc()): ?>
+                            <tr class="bg-gray-100 h-20">
+                                <td class="uppercase p-3 text-center"><?= htmlspecialchars($row1['ORDER_CODE']) ?></td>
+                                <td class="uppercase p-3 text-center"><?= htmlspecialchars($row1['PRODUCT_NAME']) ?></td>
+                                <td class="p-3 text-center"><?= $row1['QUANTITY'] ?></td>
+                                <td class="p-3 text-center">₱<?= number_format($row1['PRICE_PER_ITEM'], 2) ?></td>
+                                <td class="p-3 text-center">₱<?= number_format($row1['TOTAL_ITEM_PRICE'], 2) ?></td>
+                                <td class="p-3 text-center"><?= $row1['CLAIM_DATE'] ?></td>
+                                <td class="p-3 text-center"><?= $row1['STATUS'] ?></td>
+                            </tr>
+                        <?php endwhile; ?>
+                    </tbody>
+                </table>
+            </div>
         </div>
 
     </div>
