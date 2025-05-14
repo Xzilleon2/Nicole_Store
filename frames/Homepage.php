@@ -53,7 +53,7 @@ if (!isset($_SESSION['email'])) {
 
         <!--Discounted Product part with looped grid-->
         <h2 id="DiscountedProducts" class="font-sans text-[30px]">Discounted Products</h2>
-        <div class="w-full flex flex-wrap gap-5 justify-start items-start">
+        <div class="w-full flex flex-wrap gap-13 justify-start items-start">
 
         <?php while ($rowDis = $getDiscounted->fetch_assoc()) { ?>
             <div class="relative shadow-xl w-[300px] h-80 bg-cover hover:scale-105 transition-transform duration-300"
@@ -95,7 +95,7 @@ if (!isset($_SESSION['email'])) {
 
         <!--Featured Product part with looped grid-->
         <h2 id="FeaturedProducts" class="font-sans text-[30px] mt-10">Featured Products</h2>
-        <div class="w-full flex flex-wrap gap-5 justify-start items-start">
+        <div class="w-full flex flex-wrap gap-13 justify-start items-start">
 
             <?php while ($row = $getFeatured->fetch_assoc()) { ?>
             <div class="relative shadow-xl w-[300px] h-80 bg-cover hover:scale-105 transition-transform duration-300"

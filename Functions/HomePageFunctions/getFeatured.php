@@ -12,10 +12,6 @@ $getFeaturedQuery = "   SELECT
                             products p
                         JOIN 
                             inventory i ON p.PRODUCT_ID = i.PRODUCT_ID
-                        JOIN 
-                            featureds f ON p.PRODUCT_ID = f.PRODUCT_ID
-                        WHERE 
-                            f.isFeatured = 1
                     ";
 
 // Prepare the statement

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 08, 2025 at 04:11 PM
+-- Generation Time: May 14, 2025 at 08:22 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -24,108 +24,6 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cart`
---
-
-CREATE TABLE `cart` (
-  `CART_ID` int(11) NOT NULL,
-  `CUSTOMER_ID` int(11) DEFAULT NULL,
-  `PRODUCT_ID` int(11) DEFAULT NULL,
-  `QUANTITY` int(11) DEFAULT NULL,
-  `DATE_ADDED` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `customers`
---
-
-CREATE TABLE `customers` (
-  `CUSTOMER_ID` int(11) NOT NULL,
-  `NAME` varchar(255) DEFAULT NULL,
-  `EMAIL` varchar(255) DEFAULT NULL,
-  `PASSWORD` varchar(255) DEFAULT NULL,
-  `ADDRESS` varchar(255) DEFAULT NULL,
-  `CONTACT_NUMBER` varchar(50) DEFAULT NULL,
-  `ROLE` varchar(50) DEFAULT NULL,
-  `isACTIVE` tinyint(1) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `discounts`
---
-
-CREATE TABLE `discounts` (
-  `DISCOUNT_ID` int(11) NOT NULL,
-  `PRODUCT_ID` int(11) DEFAULT NULL,
-  `DISCOUNT_PERCENT` decimal(5,2) DEFAULT NULL,
-  `DATE_START` date DEFAULT NULL,
-  `DATE_END` date DEFAULT NULL,
-  `STATUS` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `featureds`
---
-
-CREATE TABLE `featureds` (
-  `FEATURED_ID` int(11) NOT NULL,
-  `PRODUCT_ID` int(11) DEFAULT NULL,
-  `isFeatured` tinyint(1) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `inventory`
---
-
-CREATE TABLE `inventory` (
-  `INVENTORY_ID` int(11) NOT NULL,
-  `PRODUCT_ID` int(11) DEFAULT NULL,
-  `STACK_QUANTITY` int(11) DEFAULT NULL,
-  `RESTOCK_DATE` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `orders`
---
-
-CREATE TABLE `orders` (
-  `ORDER_ID` int(11) NOT NULL,
-  `CUSTOMER_ID` int(11) DEFAULT NULL,
-  `ITEM_ID` int(11) DEFAULT NULL,
-  `CODE` varchar(100) DEFAULT NULL,
-  `QUANTITY` int(11) DEFAULT NULL,
-  `CLAIM_DATE` date DEFAULT NULL,
-  `STATUS` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `payment`
---
-
-CREATE TABLE `payment` (
-  `PAYMENT_ID` int(11) NOT NULL,
-  `CUSTOMER_ID` int(11) DEFAULT NULL,
-  `RESERVATION_ID` int(11) DEFAULT NULL,
-  `TOTAL_PRICE` int(11) DEFAULT NULL,
-  `PAYMENT_DATE` date DEFAULT NULL,
-  `STATUS` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `products`
 --
 
@@ -133,75 +31,29 @@ CREATE TABLE `products` (
   `PRODUCT_ID` int(11) NOT NULL,
   `NAME` varchar(255) DEFAULT NULL,
   `PRICE` int(11) DEFAULT NULL,
+  `ImgURL` varchar(255) NOT NULL,
   `CATEGORY` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- --------------------------------------------------------
-
 --
--- Table structure for table `reserveitems`
+-- Dumping data for table `products`
 --
 
-CREATE TABLE `reserveitems` (
-  `ITEM_ID` int(11) NOT NULL,
-  `CART_ID` int(11) DEFAULT NULL,
-  `ORDER_ID` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+INSERT INTO `products` (`PRODUCT_ID`, `NAME`, `PRICE`, `ImgURL`, `CATEGORY`) VALUES
+(1, 'Rice', 100, 'assets/ProductImages/Rice.jfif', 'Food'),
+(2, 'salt', 15, 'assets/ProductImages/salt.jfif', 'spices'),
+(3, 'Pilot Ballpens', 20, 'assets/ProductImages/ballpens.jfif', 'School Supplies'),
+(4, 'Vinegar', 22, 'assets/ProductImages/Vinegar.jpg', 'Food'),
+(5, 'Soy Sauce', 20, 'assets/ProductImages/soysauce.jpg', 'Food'),
+(6, 'jeans', 500, 'assets/ProductImages/jeans.jpg', 'Clothes'),
+(7, 'Hoody', 450, 'assets/ProductImages/Hoody.jpg', 'Clothes'),
+(8, 'garlic', 15, 'assets/ProductImages/garlic.jpg', 'Food'),
+(9, 'Ginger', 13, 'assets/ProductImages/ginger.jfif', 'Food'),
+(10, 'shorts', 300, 'assets/ProductImages/shorts.jpg', 'Clothes');
 
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `cart`
---
-ALTER TABLE `cart`
-  ADD PRIMARY KEY (`CART_ID`),
-  ADD KEY `CUSTOMER_ID` (`CUSTOMER_ID`),
-  ADD KEY `PRODUCT_ID` (`PRODUCT_ID`);
-
---
--- Indexes for table `customers`
---
-ALTER TABLE `customers`
-  ADD PRIMARY KEY (`CUSTOMER_ID`);
-
---
--- Indexes for table `discounts`
---
-ALTER TABLE `discounts`
-  ADD PRIMARY KEY (`DISCOUNT_ID`),
-  ADD KEY `PRODUCT_ID` (`PRODUCT_ID`);
-
---
--- Indexes for table `featureds`
---
-ALTER TABLE `featureds`
-  ADD PRIMARY KEY (`FEATURED_ID`),
-  ADD KEY `PRODUCT_ID` (`PRODUCT_ID`);
-
---
--- Indexes for table `inventory`
---
-ALTER TABLE `inventory`
-  ADD PRIMARY KEY (`INVENTORY_ID`),
-  ADD KEY `PRODUCT_ID` (`PRODUCT_ID`);
-
---
--- Indexes for table `orders`
---
-ALTER TABLE `orders`
-  ADD PRIMARY KEY (`ORDER_ID`),
-  ADD KEY `CUSTOMER_ID` (`CUSTOMER_ID`),
-  ADD KEY `ITEM_ID` (`ITEM_ID`);
-
---
--- Indexes for table `payment`
---
-ALTER TABLE `payment`
-  ADD PRIMARY KEY (`PAYMENT_ID`),
-  ADD KEY `CUSTOMER_ID` (`CUSTOMER_ID`),
-  ADD KEY `RESERVATION_ID` (`RESERVATION_ID`);
 
 --
 -- Indexes for table `products`
@@ -210,62 +62,14 @@ ALTER TABLE `products`
   ADD PRIMARY KEY (`PRODUCT_ID`);
 
 --
--- Indexes for table `reserveitems`
---
-ALTER TABLE `reserveitems`
-  ADD PRIMARY KEY (`ITEM_ID`),
-  ADD KEY `CART_ID` (`CART_ID`),
-  ADD KEY `ORDER_ID` (`ORDER_ID`);
-
---
--- Constraints for dumped tables
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- Constraints for table `cart`
+-- AUTO_INCREMENT for table `products`
 --
-ALTER TABLE `cart`
-  ADD CONSTRAINT `cart_ibfk_1` FOREIGN KEY (`CUSTOMER_ID`) REFERENCES `customers` (`CUSTOMER_ID`),
-  ADD CONSTRAINT `cart_ibfk_2` FOREIGN KEY (`PRODUCT_ID`) REFERENCES `products` (`PRODUCT_ID`);
-
---
--- Constraints for table `discounts`
---
-ALTER TABLE `discounts`
-  ADD CONSTRAINT `discounts_ibfk_1` FOREIGN KEY (`PRODUCT_ID`) REFERENCES `products` (`PRODUCT_ID`);
-
---
--- Constraints for table `featureds`
---
-ALTER TABLE `featureds`
-  ADD CONSTRAINT `featureds_ibfk_1` FOREIGN KEY (`PRODUCT_ID`) REFERENCES `products` (`PRODUCT_ID`);
-
---
--- Constraints for table `inventory`
---
-ALTER TABLE `inventory`
-  ADD CONSTRAINT `inventory_ibfk_1` FOREIGN KEY (`PRODUCT_ID`) REFERENCES `products` (`PRODUCT_ID`);
-
---
--- Constraints for table `orders`
---
-ALTER TABLE `orders`
-  ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`CUSTOMER_ID`) REFERENCES `customers` (`CUSTOMER_ID`),
-  ADD CONSTRAINT `orders_ibfk_2` FOREIGN KEY (`ITEM_ID`) REFERENCES `products` (`PRODUCT_ID`);
-
---
--- Constraints for table `payment`
---
-ALTER TABLE `payment`
-  ADD CONSTRAINT `payment_ibfk_1` FOREIGN KEY (`CUSTOMER_ID`) REFERENCES `customers` (`CUSTOMER_ID`),
-  ADD CONSTRAINT `payment_ibfk_2` FOREIGN KEY (`RESERVATION_ID`) REFERENCES `reserveitems` (`ITEM_ID`);
-
---
--- Constraints for table `reserveitems`
---
-ALTER TABLE `reserveitems`
-  ADD CONSTRAINT `reserveitems_ibfk_1` FOREIGN KEY (`CART_ID`) REFERENCES `cart` (`CART_ID`),
-  ADD CONSTRAINT `reserveitems_ibfk_2` FOREIGN KEY (`ORDER_ID`) REFERENCES `orders` (`ORDER_ID`);
+ALTER TABLE `products`
+  MODIFY `PRODUCT_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
