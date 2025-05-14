@@ -11,7 +11,7 @@
         $ContactNum = $_POST['ContactNumber'];
         $UserId = $_POST['user_id'];
 
-        $ProfileQuery = "UPDATE users SET name = ?, email = ?, password = ?, Contact_Number = ? WHERE user_id = ?";
+        $ProfileQuery = "UPDATE customers SET NAME = ?, EMAIL = ?, PASSWORD = ?, CONTACT_NUMBER = ? WHERE CUSTOMER_ID = ?";
         $stmt = $conn->prepare($ProfileQuery);
 
         //Hash the new password
