@@ -210,7 +210,7 @@ if (!isset($_SESSION['email'])) {
 
                     <!-- Paid Modal -->
                     <dialog id="paidModal<?= $row3['CODE'] ?>" class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-lg p-6 w-[90%] max-w-md backdrop:bg-black/30">
-                        <form method="POST" action="../Functions/AdminFunctions/updateReservationStatus.php" class="flex flex-col gap-4">
+                        <form method="POST" action="../Functions/AdminFunctions/processStatus.php" class="flex flex-col gap-4">
                             <input type="hidden" name="reservation_code" value="<?= $row3['CODE'] ?>">
                             <h2 class="text-lg font-bold">Mark as Paid</h2>
                             <p class="text-center">Are you sure you want to mark this reservation as paid?</p>
@@ -223,7 +223,7 @@ if (!isset($_SESSION['email'])) {
 
                     <!-- Expired Modal -->
                     <dialog id="expiredModal<?= $row3['CODE'] ?>" class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-lg p-6 w-[90%] max-w-md backdrop:bg-black/30">
-                        <form method="POST" action="../Functions/AdminFunctions/updateReservationStatus.php" class="flex flex-col gap-4">
+                        <form method="POST" action="../Functions/AdminFunctions/processStatus.php" class="flex flex-col gap-4">
                             <input type="hidden" name="reservation_code" value="<?= $row3['CODE'] ?>">
                             <h2 class="text-lg font-bold">Mark as Expired</h2>
                             <p class="text-center">Are you sure you want to mark this reservation as expired?</p>
