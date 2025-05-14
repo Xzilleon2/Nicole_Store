@@ -55,27 +55,41 @@ if (!isset($_SESSION['email'])) {
         <h2 id="DiscountedProducts" class="font-sans text-[30px]">Discounted Products</h2>
         <div class="w-full flex flex-wrap gap-5 justify-start items-start">
 
-            <?php while ($rowDis = $getDiscounted->fetch_assoc()) { ?>
+        <?php while ($rowDis = $getDiscounted->fetch_assoc()) { ?>
             <div class="relative shadow-xl w-[300px] h-80 bg-cover hover:scale-105 transition-transform duration-300"
                 style="background-image: url('../<?php echo htmlspecialchars($rowDis['ImgURL']); ?>');">
-            
+
                 <!-- Dark overlay -->
                 <div class="absolute inset-0 bg-black opacity-20 rounded-md"></div>
-                
-                <!-- Card content --> 
+
+                <!-- Card content -->
                 <div class="relative z-10 flex flex-col justify-end h-full p-4 text-white">
-                    <h2 class="place-self-end text-red-700">20% OFF</h2>
+                    <h2 class="place-self-end text-green-700">
+                        <?php echo intval($rowDis['DISCOUNT_PERCENT'] * 100); ?>% OFF
+                    </h2>
                     <div class="flex items-end justify-between">
-                        <h2 class="w-fit font-semibold"><?php echo htmlspecialchars($rowDis['NAME']); ?></h2>
+                        <h2 class="uppercase w-fit font-semibold"><?php echo htmlspecialchars($rowDis['NAME']); ?></h2>
                         <p class="text-sm">Stacks: <?php echo htmlspecialchars($rowDis['STACK_QUANTITY']); ?></p>
                     </div>
                     <div class="flex justify-between items-center mt-2">
-                        <p class="text-green-300 font-semibold">P<?php echo htmlspecialchars($rowDis['PRICE']); ?></p>
-                        <button class="showaddCart w-20 bg-[#1E1E1E] text-white rounded-lg px-2 py-1 hover:cursor-pointer">ADD</button>
+                        <p class="text-green-700 font-bold">
+                            <span class="line-through text-red-700">P<?php echo htmlspecialchars($rowDis['ORIGINAL_PRICE']); ?></span>
+                            &nbsp;P<?php echo htmlspecialchars($rowDis['DISCOUNTED_PRICE']); ?>
+                        </p>
+                        <button 
+                            class="showaddCart w-20 bg-[#1E1E1E] text-white rounded-lg px-2 py-1 hover:cursor-pointer"
+                            data-name="<?php echo htmlspecialchars($rowDis['NAME']); ?>"
+                            data-price="<?php echo htmlspecialchars($rowDis['DISCOUNTED_PRICE']); ?>"
+                            data-stock="<?php echo htmlspecialchars($rowDis['STACK_QUANTITY']); ?>"
+                            data-id="<?php echo htmlspecialchars($rowDis['PRODUCT_ID']); ?>"
+                        >
+                            ADD
+                        </button>
                     </div>
                 </div>
             </div>
-            <?php } ?>
+        <?php } ?>
+
 
         </div>
 
@@ -93,12 +107,21 @@ if (!isset($_SESSION['email'])) {
                 <!-- Card content -->
                 <div class="relative z-10 flex flex-col justify-end h-full p-4 text-white">
                     <div class="flex items-end justify-between">
-                        <h2 class="w-fit font-semibold"><?php echo htmlspecialchars($row['NAME']); ?></h2>
+                        <h2 class="uppercase w-fit font-semibold"><?php echo htmlspecialchars($row['NAME']); ?></h2>
                         <p class="text-sm">Stacks: <?php echo htmlspecialchars($row['STACK_QUANTITY']); ?></p>
                     </div>
                     <div class="flex justify-between items-center mt-2">
                         <p class="text-green-300 font-semibold">P<?php echo htmlspecialchars($row['PRICE']); ?></p>
-                        <button class="showaddCart w-20 bg-[#1E1E1E] text-white rounded-lg px-2 py-1 hover:cursor-pointer">ADD</button>
+                        <button 
+                            class="showaddCart w-20 bg-[#1E1E1E] text-white rounded-lg px-2 py-1 hover:cursor-pointer"
+                            data-name="<?php echo htmlspecialchars($row['NAME']); ?>"
+                            data-price="<?php echo htmlspecialchars($row['PRICE']); ?>"
+                            data-stock="<?php echo htmlspecialchars($row['STACK_QUANTITY']); ?>"
+                            data-id="<?php echo htmlspecialchars($row['PRODUCT_ID']); ?>"
+                        >
+                            ADD
+                        </button>
+
                     </div>
                 </div>
             </div>
