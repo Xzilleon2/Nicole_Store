@@ -9,34 +9,47 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['updateProduct'])) {
     $stock = (int) $_POST['stock'];
     $category = trim($_POST['category']);
 
-    // Update product info in `products` table
-    $updateProductQuery = "UPDATE products SET NAME = ?, PRICE = ?, CATEGORY = ? WHERE PRODUCT_ID = ?";
-    $stmtProduct = $conn->prepare($updateProductQuery);
-    $stmtProduct->bind_param("sdsi", $name, $price, $category, $product_id);
-    $stmtProduct->execute();
+    try {
+        // Begin transaction
+        $conn->begin_transaction();
 
-    // Update stock in `inventory` table
-    $updateInventoryQuery = "UPDATE inventory SET STACK_QUANTITY = ? WHERE PRODUCT_ID = ?";
-    $stmtInventory = $conn->prepare($updateInventoryQuery);
-    $stmtInventory->bind_param("ii", $stock, $product_id);
-    $stmtInventory->execute();
+        // Update product info in `products` table
+        $updateProductQuery = "UPDATE products SET NAME = ?, PRICE = ?, CATEGORY = ? WHERE PRODUCT_ID = ?";
+        $stmtProduct = $conn->prepare($updateProductQuery);
+        $stmtProduct->bind_param("sdsi", $name, $price, $category, $product_id);
+        if (!$stmtProduct->execute()) {
+            throw new Exception("Failed to update product info: " . $stmtProduct->error);
+        }
 
-    // Check for success
-    if ($stmtProduct->affected_rows >= 0 || $stmtInventory->affected_rows >= 0) {
+        // Update stock in `inventory` table
+        $updateInventoryQuery = "UPDATE inventory SET STACK_QUANTITY = ? WHERE PRODUCT_ID = ?";
+        $stmtInventory = $conn->prepare($updateInventoryQuery);
+        $stmtInventory->bind_param("ii", $stock, $product_id);
+        if (!$stmtInventory->execute()) {
+            throw new Exception("Failed to update inventory: " . $stmtInventory->error);
+        }
+
+        // Commit transaction
+        $conn->commit();
+
         echo "<script>
             alert('Product updated successfully!');
             window.location.href = '../../frames/DashboardAdmin.php';
         </script>";
-    } else {
+
+    } catch (Exception $e) {
+        // Rollback transaction if any query fails
+        $conn->rollback();
+
         echo "<script>
-            alert('Update failed. Please try again.');
+            alert('Update failed: " . addslashes($e->getMessage()) . "');
             window.history.back();
         </script>";
     }
 
     // Close connections
-    $stmtProduct->close();
-    $stmtInventory->close();
+    if (isset($stmtProduct)) $stmtProduct->close();
+    if (isset($stmtInventory)) $stmtInventory->close();
     $conn->close();
 }
 ?>
