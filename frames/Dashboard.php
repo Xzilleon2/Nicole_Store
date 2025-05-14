@@ -84,7 +84,7 @@ if (!isset($_SESSION['email'])) {
                         </tr>
                     </thead>
                     <tbody class="h-full overflow-y-scroll">
-                        <?php while ($row = $getCart->fetch_assoc()): ?>
+                    <?php while ($row = $getCart->fetch_assoc()): ?>
                         <tr class="bg-gray-100 h-20">
                             <td class="p-3 text-center">
                                 <input class="h-5 w-full" type="checkbox" name="selected_cart[]" value="<?= $row['CART_ID'] ?>">
@@ -94,17 +94,39 @@ if (!isset($_SESSION['email'])) {
                             <td class="p-3 text-center"><?= $row['TOTAL_PRICE'] ?></td>
                             <td class="p-3 text-center"><?= $row['DATE_ADDED'] ?></td>
                             <td class="p-3 flex justify-center gap-5">
-                                <form action="updateCart.php" method="POST" class="inline">
-                                    <input type="hidden" name="cart_id" value="<?= $row['CART_ID'] ?>">
-                                    <button type="submit" class="bg-yellow-200 rounded-full p-3 w-[100px] border font-bold hover:cursor-pointer">Update</button>
-                                </form>
-                                <form action="deleteCart.php" method="POST" class="inline">
-                                    <input type="hidden" name="cart_id" value="<?= $row['CART_ID'] ?>">
-                                    <button type="submit" class="bg-red-700 rounded-full p-3 w-[100px] border font-bold hover:cursor-pointer text-white">Delete</button>
-                                </form>
+                                <!-- Trigger Buttons -->
+                                <button onclick="document.getElementById('updateModal<?= $row['CART_ID'] ?>').showModal()" class="bg-yellow-200 rounded-full p-3 w-[100px] border font-bold hover:cursor-pointer">Update</button>
+                                <button onclick="document.getElementById('deleteModal<?= $row['CART_ID'] ?>').showModal()" class="bg-red-700 rounded-full p-3 w-[100px] border font-bold hover:cursor-pointer text-white">Delete</button>
                             </td>
                         </tr>
-                        <?php endwhile; ?>
+
+                        <!-- Update Modal -->
+                        <dialog id="updateModal<?= $row['CART_ID'] ?>" class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-lg p-6 w-[90%] max-w-md backdrop:bg-black/30">
+                            <form method="POST" action="../Functions/DashboardFunctions/updateCart.php" class="flex flex-col gap-4">
+                                <input type="hidden" name="cart_id" value="<?= $row['CART_ID'] ?>">
+                                <h2 class="text-lg font-bold">Update Quantity</h2>
+                                <input type="number" name="quantity" value="<?= $row['QUANTITY'] ?>" min="1" class="border p-2 rounded">
+                                <div class="flex justify-end gap-3">
+                                    <button type="submit" name="updateBtn" class="bg-yellow-400 px-4 py-2 rounded font-bold">Save</button>
+                                    <button type="button" onclick="document.getElementById('updateModal<?= $row['CART_ID'] ?>').close()" class="px-4 py-2 bg-gray-300 rounded">Cancel</button>
+                                </div>
+                            </form>
+                        </dialog>
+
+                        <!-- Delete Modal -->
+                        <dialog id="deleteModal<?= $row['CART_ID'] ?>" class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-lg p-6 w-[90%] max-w-md backdrop:bg-black/30">
+                            <form method="POST" action="deleteCart.php" class="flex flex-col gap-4">
+                                <input type="hidden" name="cart_id" value="<?= $row['CART_ID'] ?>">
+                                <h2 class="text-lg font-bold text-center">Confirm Deletion</h2>
+                                <p class="text-center">Are you sure you want to delete <strong><?= htmlspecialchars($row['NAME']) ?></strong> from the cart?</p>
+                                <div class="flex justify-end gap-3">
+                                    <button type="submit" name="deleteBtn" class="bg-red-600 text-white px-4 py-2 rounded font-bold">Delete</button>
+                                    <button type="button" onclick="document.getElementById('deleteModal<?= $row['CART_ID'] ?>').close()" class="px-4 py-2 bg-gray-300 rounded">Cancel</button>
+                                </div>
+                            </form>
+                        </dialog>
+                    <?php endwhile; ?>
+
                     </tbody>
                 </table>
             </div>
