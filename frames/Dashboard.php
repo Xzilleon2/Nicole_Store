@@ -17,6 +17,7 @@ if (!isset($_SESSION['email'])) {
         include './modals/AdminDashboardModal/editProfile.php';
         include './modals/DashboardModal/Checkout.php';
         include '../Functions/DashboardFunctions/getCart.php';
+        include '../Functions/DashboardFunctions/getCheckout.php';
     ?>
 </head>
 <body>
@@ -89,7 +90,7 @@ if (!isset($_SESSION['email'])) {
                         </td>
                         <td class="uppercase p-3 text-center"><?= htmlspecialchars($row['NAME']) ?></td>
                         <td class="p-3 text-center"><?= $row['QUANTITY'] ?></td>
-                        <td class="p-3 text-center">P<?= $row['TOTAL_PRICE'] ?></td>
+                        <td class="p-3 text-center"><?= $row['TOTAL_PRICE'] ?></td>
                         <td class="p-3 text-center"><?= $row['DATE_ADDED'] ?></td>
                         <td class="p-3 flex justify-center gap-5">
                             <form action="updateCart.php" method="POST" class="inline">
@@ -113,23 +114,28 @@ if (!isset($_SESSION['email'])) {
                 <thead class="bg-[#1E1E1E] text-white h-20">
                     <tr>
                     <th class="w-xl">CODE</th>
-                    <th class="w-xl">Items</th>
+                    <th class="w-xl">ITEMS</th>
                     <th class="w-sm">QUANTITY</th>
-                    <th class="w-sm">CLAIM Date</th>
+                    <th class="w-sm">UNIT PRICE</th>
+                    <th class="w-sm">TOTAL PRICE</th>
+                    <th class="w-sm">CLAIM DATE</th>
                     <th class="w-sm">Status</th>
                     </tr>
                 </thead>
                 <tbody class="h-full overflow-y-scroll">
-                    <?php while ($row = $getCart->fetch_assoc()): ?>
-                    <tr class="bg-gray-100 h-20">
-                    <td class="p-3 text-center">TEST XXX-1111</td>
-                    <td class="p-3 text-center">Vinegar, Rice, Pork, Beans</td>
-                    <td class="p-3 text-center">P1000</td>
-                    <td class="p-3 text-center">01-01-2025</td>
-                    <td class="p-3 text-center">Paid</td>
-                    </tr>
+                    <?php while ($row1 = $getCheckout->fetch_assoc()): ?>
+                        <tr class="bg-gray-100 h-20">
+                            <td class="uppercase p-3 text-center"><?= htmlspecialchars($row1['ORDER_CODE']) ?></td>
+                            <td class="uppercase p-3 text-center"><?= htmlspecialchars($row1['PRODUCT_NAME']) ?></td>
+                            <td class="p-3 text-center"><?= $row1['QUANTITY'] ?></td>
+                            <td class="p-3 text-center">₱<?= number_format($row1['PRICE_PER_ITEM'], 2) ?></td>
+                            <td class="p-3 text-center">₱<?= number_format($row1['TOTAL_ITEM_PRICE'], 2) ?></td>
+                            <td class="p-3 text-center"><?= $row1['CLAIM_DATE'] ?></td>
+                            <td class="p-3 text-center"><?= $row1['STATUS'] ?></td>
+                        </tr>
                     <?php endwhile; ?>
                 </tbody>
+
             </table>
         </div>
 

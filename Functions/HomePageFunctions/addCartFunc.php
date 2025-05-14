@@ -15,7 +15,7 @@ $product_name = $_POST['product_name'];
 $product_id = $_POST['product_id'];
 $quantity = (int) $_POST['quantity'];
 $price = (float) $_POST['price'];
-$total_price = (float) $_POST['total_price']; // new
+$total_price = (float) $_POST['total_price'];
 $stock = $_POST['stock'];
 $date_added = date('Y-m-d');  // Current date
 
