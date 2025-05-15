@@ -5,7 +5,8 @@ $getReservationsQuery = "
     SELECT 
         o.CODE, 
         GROUP_CONCAT(p.NAME SEPARATOR ', ') AS ITEMS, 
-        c.NAME, 
+        c.NAME,
+        ct.QUANTITY,
         o.TOTAL_PRICE, 
         o.CLAIM_DATE, 
         o.STATUS
@@ -15,7 +16,7 @@ $getReservationsQuery = "
     JOIN cart ct ON ri.CART_ID = ct.CART_ID
     JOIN products p ON ct.PRODUCT_ID = p.PRODUCT_ID
     GROUP BY o.ORDER_ID
-    ORDER BY o.CLAIM_DATE DESC
+    ORDER BY o.STATUS DESC
 ";
 
 $stmt = $conn->prepare($getReservationsQuery);

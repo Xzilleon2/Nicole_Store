@@ -187,6 +187,7 @@ if (!isset($_SESSION['email'])) {
                         <th class="w-xl">RESERVATION CODE</th>
                         <th class="w-xl">ITEMS</th>
                         <th class="w-xl">CUSTOMER NAME</th>
+                        <th class="w-sm">QUANTITY</th>
                         <th class="w-sm">TOTAL PRICE</th>
                         <th class="w-sm">RESERVE UNTIL</th>
                         <th class="w-sm">STATUS</th>
@@ -199,6 +200,7 @@ if (!isset($_SESSION['email'])) {
                         <td class="p-3 text-center"><?= htmlspecialchars($row3['CODE']) ?></td>
                         <td class="p-3 text-center"><?= htmlspecialchars($row3['ITEMS']) ?></td>
                         <td class="p-3 text-center"><?= htmlspecialchars($row3['NAME']) ?></td>
+                        <td class="p-3 text-center"><?= htmlspecialchars($row3['QUANTITY']) ?></td>
                         <td class="p-3 text-center">₱<?= number_format($row3['TOTAL_PRICE'], 2) ?></td>
                         <td class="p-3 text-center"><?= $row3['CLAIM_DATE'] ?></td>
                         <td class="p-3 text-center"><?= htmlspecialchars($row3['STATUS']) ?></td>
