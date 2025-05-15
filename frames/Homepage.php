@@ -69,7 +69,7 @@ if (!isset($_SESSION['email'])) {
                     </h2>
                     <div class="flex items-end justify-between">
                         <h2 class="uppercase w-fit font-semibold"><?php echo htmlspecialchars($rowDis['NAME']); ?></h2>
-                        <p class="text-sm">Stacks: <?php echo htmlspecialchars($rowDis['STACK_QUANTITY']); ?></p>
+                        <p class="text-sm">Stocks: <?php echo htmlspecialchars($rowDis['STACK_QUANTITY']); ?></p>
                     </div>
                     <div class="flex justify-between items-center mt-2">
                         <p class="text-green-700 font-bold">
@@ -108,7 +108,7 @@ if (!isset($_SESSION['email'])) {
                 <div class="relative z-10 flex flex-col justify-end h-full p-4 text-white">
                     <div class="flex items-end justify-between">
                         <h2 class="uppercase w-fit font-semibold"><?php echo htmlspecialchars($row['NAME']); ?></h2>
-                        <p class="text-sm">Stacks: <?php echo htmlspecialchars($row['STACK_QUANTITY']); ?></p>
+                        <p class="text-sm">Stocks: <?php echo htmlspecialchars($row['STACK_QUANTITY']); ?></p>
                     </div>
                     <div class="flex justify-between items-center mt-2">
                         <p class="text-green-300 font-semibold">P<?php echo htmlspecialchars($row['PRICE']); ?></p>
