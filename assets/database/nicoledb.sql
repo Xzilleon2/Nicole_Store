@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 15, 2025 at 10:46 AM
+-- Generation Time: May 23, 2025 at 10:55 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -42,10 +42,12 @@ CREATE TABLE `cart` (
 
 INSERT INTO `cart` (`CART_ID`, `CUSTOMER_ID`, `PRODUCT_ID`, `QUANTITY`, `TOTAL_PRICE`, `DATE_ADDED`) VALUES
 (14, 1, 1, 1, 100.00, '2025-05-14'),
-(15, 1, 2, 2, 30.00, '2025-05-14'),
+(15, 1, 2, 8, 120.00, '2025-05-15'),
 (16, 1, 3, 7, 140.00, '2025-05-14'),
 (17, 1, 7, 1, 450.00, '2025-05-14'),
-(18, 1, 11, 20, 4000.00, '2025-05-15');
+(18, 1, 11, 20, 4000.00, '2025-05-15'),
+(19, 2, 10, 2, 600.00, '2025-05-15'),
+(20, 2, 11, 1, 200.00, '2025-05-15');
 
 -- --------------------------------------------------------
 
@@ -68,7 +70,8 @@ CREATE TABLE `customers` (
 --
 
 INSERT INTO `customers` (`CUSTOMER_ID`, `NAME`, `EMAIL`, `PASSWORD`, `CONTACT_NUMBER`, `ROLE`, `isACTIVE`) VALUES
-(1, 'Joseph Mejos', 'Xzilleon2@gmail.com', '$2y$10$uKJw69Xd2/ufSkjaKZqd1.5DMTnLyVPHdJo1w/U9qL9Ed9DLHbl6W', '09165211715', 'customer', NULL);
+(1, 'Joseph Mejos', 'Xzilleon2@gmail.com', '$2y$10$uKJw69Xd2/ufSkjaKZqd1.5DMTnLyVPHdJo1w/U9qL9Ed9DLHbl6W', '09165211715', 'customer', NULL),
+(2, 'sample', 'sample@gmail.com', '$2y$10$6BT8fSTENZcr1RrFSoaQCObNehbjZomD7f8/gbXBMiwkjzlP8FLG6', '09454030312', 'customer', NULL);
 
 -- --------------------------------------------------------
 
@@ -140,8 +143,8 @@ INSERT INTO `inventory` (`INVENTORY_ID`, `PRODUCT_ID`, `STACK_QUANTITY`, `RESTOC
 (7, 7, 42, '2025-05-15'),
 (8, 8, 50, '2025-05-15'),
 (9, 9, 100, '2025-05-15'),
-(10, 10, 60, '2025-05-15'),
-(11, 11, 50, '2025-05-15'),
+(10, 10, 58, '2025-05-15'),
+(11, 11, 30, '2025-05-15'),
 (12, 12, 40, '2025-05-15'),
 (13, 13, 50, '2025-05-15');
 
@@ -176,7 +179,11 @@ INSERT INTO `orders` (`ORDER_ID`, `CUSTOMER_ID`, `CODE`, `TOTAL_PRICE`, `CLAIM_D
 (21, 1, 'ORD-B4B518', 6000.00, '2025-05-16', 'Expired', 0),
 (22, 1, 'ORD-0A913F', 30.00, '2025-05-16', 'Expired', 1),
 (23, 1, 'ORD-E98547', 6000.00, '2025-05-16', 'Paid', 0),
-(24, 1, 'ORD-7E8085', 4000.00, '2025-05-16', 'Expired', 1);
+(24, 1, 'ORD-7E8085', 4000.00, '2025-05-16', 'Expired', 1),
+(25, 2, 'ORD-208088', 600.00, '2025-05-16', 'Paid', 0),
+(26, 2, 'ORD-76C1D9', 200.00, '2025-05-16', 'Expired', 1),
+(27, 1, 'ORD-663B0F', 4000.00, '2025-05-16', 'Pending', 0),
+(28, 1, 'ORD-A3FE34', 120.00, '2025-05-16', 'Expired', 1);
 
 -- --------------------------------------------------------
 
@@ -257,7 +264,11 @@ INSERT INTO `reserveitems` (`ITEM_ID`, `CART_ID`, `ORDER_ID`) VALUES
 (18, 18, 21),
 (19, 15, 22),
 (20, 18, 23),
-(21, 18, 24);
+(21, 18, 24),
+(22, 19, 25),
+(23, 20, 26),
+(24, 18, 27),
+(25, 15, 28);
 
 --
 -- Indexes for dumped tables
@@ -335,13 +346,13 @@ ALTER TABLE `reserveitems`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `CART_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `CART_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `CUSTOMER_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `CUSTOMER_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `discounts`
@@ -365,7 +376,7 @@ ALTER TABLE `inventory`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `ORDER_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `ORDER_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `payment`
@@ -383,7 +394,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `reserveitems`
 --
 ALTER TABLE `reserveitems`
-  MODIFY `ITEM_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `ITEM_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- Constraints for dumped tables
