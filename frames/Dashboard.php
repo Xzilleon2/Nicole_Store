@@ -34,7 +34,7 @@ if (!isset($_SESSION['email'])) {
         <div class="flex justify-between w-full h-30 p-5">
 
             <div class="flex w-sm gap-3 p-1">
-                <div class=" w-[100px] bg-blue-300 rounded-full h-20 text-2xl font-bold flex items-center justify-center text-center">
+                <div class=" w-[100px] bg-gray-500 rounded-full h-20 text-2xl font-bold flex items-center justify-center text-center">
                     <h1><?php echo $_SESSION['profname'] ?></h1>
                 </div>
                 <div class="w-full flex flex-col justify-center">
@@ -56,12 +56,12 @@ if (!isset($_SESSION['email'])) {
                     hover:cursor-pointer">
                         <h1>Tables</h1>
                     </div>
-                    <div class="absolute w-[160px] top-full right-0 rounded-lg p-3 bg-[#1E1E1E] shadow-md scale-y-0
+                    <div class="absolute w-[160px] top-full -right-3 rounded-lg p-3 bg-[#1E1E1E] shadow-md scale-y-0
                     group-hover:scale-y-100 origin-top duration-200">
                         <button id="showCartTable" class="px-1 my-1 w-full text-start cursor-pointer
-                         hover:bg-[#3C3C3C] duration-300 rounded-md">Cart</button>
+                         hover:text-gray-500 duration-300 rounded-md">Cart</button>
                         <button id="showPurchaseTable" class="px-1 my-1 w-full text-start cursor-pointer
-                         hover:bg-[#3C3C3C] duration-300 rounded-md">Checkout History</button>
+                         hover:text-gray-500 duration-300 rounded-md">History</button>
                     </div>
                 </div>
 
@@ -119,7 +119,7 @@ if (!isset($_SESSION['email'])) {
         </div>
 
         <!--Table for Purchased Products-->
-        <div id="PurchaseTable" class="block hidden max-h-xl border p-3 flex justify-center overflow-y-auto">
+        <div id="PurchaseTable" class="block hidden max-h-xl border h-full p-3 flex justify-center overflow-y-auto">
             <div class="w-full">
                 <table id="Purchase" class="table-auto border-separate h-auto">
                     <thead class="bg-[#1E1E1E] text-white h-20">

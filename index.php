@@ -18,7 +18,7 @@ session_start();
       <div class='w-screen flex text-center justify-between border-b-1 px-10 pt-10 pb-5'>
 
           <h2 class='font-[Italiana] font-bold text-4xl'>
-            Nicole's
+            Stash
           </h2>
           <div id="registerBtn" class='flex border w-[100px] bg-white text-black p-2 text-center 
           justify-center rounded-2xl hover:bg-[#1E1E1E] cursor-pointer hover:text-white'>

@@ -27,7 +27,7 @@ if (!isset($_SESSION['email'])) {
     <div class="flex flex-col py-10 px-15 h-screen">
         <div class="flex justify-between w-full h-30 p-5">
             <div class="flex w-sm gap-3 p-1">
-                <div class=" w-[100px] bg-blue-300 font-bold text-2xl rounded-full h-20 flex items-center justify-center text-center">
+                <div class=" w-[100px] bg-gray-500 font-bold text-2xl rounded-full h-20 flex items-center justify-center text-center">
                     <h1><?php echo $_SESSION['profname'] ?></h1>
                 </div>
                 <div class="w-full flex flex-col justify-center">
