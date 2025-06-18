@@ -70,12 +70,12 @@ if (!isset($_SESSION['email'])) {
         </div>
 
         <!--Table for Cart items-->
-        <div id="CartTable" class="border h-full p-3 flex flex-col">
+        <div class="border h-full p-3 flex flex-col">
             <div class="w-full overflow-x-auto">
                 <table id="CartTable" class="table-auto border-separate h-fit">
                     <thead class="bg-[#1E1E1E] text-white h-20">
                         <tr>
-                        <th class="w-[100px]">Select</th>
+                        <th class="w-[100px]"> </th>
                         <th class="w-xl">PRODUCT</th>
                         <th class="w-sm">QUANTITY</th>
                         <th class="w-sm">TOTAL PRICE</th>
@@ -85,7 +85,7 @@ if (!isset($_SESSION['email'])) {
                     </thead>
                     <tbody class="h-full overflow-y-scroll">
                     <?php while ($row = $getCart->fetch_assoc()): ?>
-                        <tr class="bg-gray-100 h-20">
+                        <tr class="even:bg-white odd:bg-gray-100 h-20">
                             <td class="p-3 text-center">
                                 <input class="h-5 w-full" type="checkbox" name="selected_cart[]" value="<?= $row['CART_ID'] ?>">
                             </td>
@@ -116,13 +116,12 @@ if (!isset($_SESSION['email'])) {
                     </tbody>
                 </table>
             </div>
-
         </div>
 
         <!--Table for Purchased Products-->
-        <div id="PurchaseTable" class="hidden h-xl max-h-xl border p-3 flex justify-center overflow-x-auto">
+        <div class="hidden h-xl max-h-xl border p-3 flex justify-center overflow-x-auto">
             <div class="w-full overflow-x-auto">
-                <table class="table-auto border-separate h-sm">
+                <table id="PurchaseTable" class="table-auto border-separate h-sm">
                     <thead class="bg-[#1E1E1E] text-white h-20">
                         <tr>
                             <th class="w-xl">CODE</th>
@@ -156,6 +155,12 @@ if (!isset($_SESSION['email'])) {
     <?php include '../includes/Footer.php'; ?>
     <!--Function for the modals of Dashboard-->
     <?php include './DashboardScript/DashboardScript.php'; ?>
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const table = document.querySelector("#CartTable");
+        new simpleDatatables.DataTable(table);
+    });
+    </script>
 
 </body>
 </html>
