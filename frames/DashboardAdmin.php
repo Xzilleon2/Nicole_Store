@@ -61,8 +61,8 @@ if (!isset($_SESSION['email'])) {
         </div>
 
         <!--Table for Inventory-->
-        <div id="InventoryTable" class="border h-full p-3 flex justify-center overflow-x-auto">
-            <table class="table-auto border-separate h-fit">
+        <div id="InventoryTable" class="border h-full p-3 overflow-x-auto">
+            <table id="Inventory" class="table-auto border-separate h-fit">
                 <thead class="bg-[#1E1E1E] text-white h-20">
                     <tr>
                         <th class="w-xl">PRODUCTS</th>
@@ -75,7 +75,7 @@ if (!isset($_SESSION['email'])) {
                 </thead>
                 <tbody class="h-full">
                     <?php while ($row1 = $getInventory->fetch_assoc()): ?>
-                    <tr class="bg-gray-100 h-20">
+                    <tr class="even:bg-white odd:bg-gray-100 h-20">
                         <td class="p-3 text-center"><?= htmlspecialchars($row1['NAME']) ?></td>
                         <td class="p-3 text-center">₱<?= number_format($row1['PRICE'], 2) ?></td>
                         <td class="p-3 text-center"><?= $row1['STACK_QUANTITY'] ?></td>
@@ -121,7 +121,7 @@ if (!isset($_SESSION['email'])) {
 
         <!-- Table for Customers -->
         <div id="CustomerTable" class="hidden border h-full p-3 flex justify-center overflow-x-auto">
-            <table class="table-auto border-separate h-fit">
+            <table id="Customer" class="table-auto border-separate h-fit">
                 <thead class="bg-[#1E1E1E] text-white h-20">
                     <tr>
                         <th class="w-sm">ID</th>
@@ -134,7 +134,7 @@ if (!isset($_SESSION['email'])) {
                 </thead>
                 <tbody class="h-full">
                     <?php while ($row2 = $getCustomers->fetch_assoc()): ?>
-                    <tr class="bg-gray-100 h-20">
+                    <tr class="even:bg-white odd:bg-gray-100 h-20">
                         <td class="p-3 text-center"><?= $row2['CUSTOMER_ID'] ?></td>
                         <td class="p-3 text-center"><?= htmlspecialchars($row2['NAME']) ?></td>
                         <td class="p-3 text-center"><?= htmlspecialchars($row2['EMAIL']) ?></td>
@@ -181,7 +181,7 @@ if (!isset($_SESSION['email'])) {
 
         <!-- Table for Reservations -->
         <div id="ReservationTable" class="hidden border h-full p-3 flex justify-center overflow-x-auto">
-            <table class="table-auto border-separate h-fit">
+            <table id="Reservation" class="table-auto border-separate h-fit">
                 <thead class="bg-[#1E1E1E] text-white h-20">
                     <tr>
                         <th class="w-xl">RESERVATION CODE</th>
@@ -196,7 +196,7 @@ if (!isset($_SESSION['email'])) {
                 </thead>
                 <tbody class="h-full">
                     <?php while ($row3 = $getReservations->fetch_assoc()): ?>
-                    <tr class="bg-gray-100 h-20">
+                    <tr class="even:bg-white odd:bg-gray-100 h-20">
                         <td class="p-3 text-center"><?= htmlspecialchars($row3['CODE']) ?></td>
                         <td class="p-3 text-center"><?= htmlspecialchars($row3['ITEMS']) ?></td>
                         <td class="p-3 text-center"><?= htmlspecialchars($row3['NAME']) ?></td>
@@ -247,6 +247,16 @@ if (!isset($_SESSION['email'])) {
 
     <?php include '../includes/Footer.php'; ?>
     <?php include './AdminDashboardScript/AdminDashScript.php'; ?>
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const Rtable = document.querySelector("#Reservation");
+        const Cutable = document.querySelector("#Customer");
+        const Itable = document.querySelector("#Inventory");
+        new simpleDatatables.DataTable(Rtable);
+        new simpleDatatables.DataTable(Cutable);
+        new simpleDatatables.DataTable(Itable);
+    });
+    </script>
 
 </body>
 </html>

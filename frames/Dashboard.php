@@ -70,9 +70,9 @@ if (!isset($_SESSION['email'])) {
         </div>
 
         <!--Table for Cart items-->
-        <div class="border h-full p-3 flex flex-col">
+        <div id="CartTable" class="border h-full p-3 flex flex-col">
             <div class="w-full overflow-x-auto">
-                <table id="CartTable" class="table-auto border-separate h-fit">
+                <table id="Cart" class="table-auto border-separate h-fit">
                     <thead class="bg-[#1E1E1E] text-white h-20">
                         <tr>
                         <th class="w-[100px]"> </th>
@@ -119,9 +119,9 @@ if (!isset($_SESSION['email'])) {
         </div>
 
         <!--Table for Purchased Products-->
-        <div class="hidden h-xl max-h-xl border p-3 flex justify-center overflow-x-auto">
-            <div class="w-full overflow-x-auto">
-                <table id="PurchaseTable" class="table-auto border-separate h-sm">
+        <div id="PurchaseTable" class="block hidden max-h-xl border p-3 flex justify-center overflow-y-auto">
+            <div class="w-full">
+                <table id="Purchase" class="table-auto border-separate h-auto">
                     <thead class="bg-[#1E1E1E] text-white h-20">
                         <tr>
                             <th class="w-xl">CODE</th>
@@ -133,9 +133,9 @@ if (!isset($_SESSION['email'])) {
                             <th class="w-sm">Status</th>
                         </tr>
                     </thead>
-                    <tbody class="h-full">
+                    <tbody class="h-full overflow-y-auto max-h-[200px]">
                         <?php while ($row1 = $getCheckout->fetch_assoc()): ?>
-                            <tr class="bg-gray-100 h-20">
+                            <tr class="even:bg-white odd:bg-gray-100 h-20">
                                 <td class="uppercase p-3 text-center"><?= htmlspecialchars($row1['ORDER_CODE']) ?></td>
                                 <td class="uppercase p-3 text-center"><?= htmlspecialchars($row1['PRODUCT_NAME']) ?></td>
                                 <td class="p-3 text-center"><?= $row1['QUANTITY'] ?></td>
@@ -149,7 +149,6 @@ if (!isset($_SESSION['email'])) {
                 </table>
             </div>
         </div>
-
     </div>
 
     <?php include '../includes/Footer.php'; ?>
@@ -157,8 +156,10 @@ if (!isset($_SESSION['email'])) {
     <?php include './DashboardScript/DashboardScript.php'; ?>
     <script>
     document.addEventListener('DOMContentLoaded', function () {
-        const table = document.querySelector("#CartTable");
-        new simpleDatatables.DataTable(table);
+        const Ptable = document.querySelector("#Purchase");
+        const Ctable = document.querySelector("#Cart");
+        new simpleDatatables.DataTable(Ptable);
+        new simpleDatatables.DataTable(Ctable);
     });
     </script>
 
