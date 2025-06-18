@@ -23,7 +23,7 @@ if (!isset($_SESSION['email'])) {
     <?php include '../includes/Header.php'; ?>
 
     <!--Main Div for the Body-->
-    <div class="flex flex-col justify-center w-full py-10 px-10 gap-5">
+    <div class="flex flex-col justify-center w-full py-10 px-20 gap-5">
 
         <!--Store Features and info-->
         <div class="w-full flex flex-wrap justify-center gap-10">
@@ -72,7 +72,7 @@ if (!isset($_SESSION['email'])) {
                         <p class="text-sm">Stocks: <?php echo htmlspecialchars($rowDis['STACK_QUANTITY']); ?></p>
                     </div>
                     <div class="flex justify-between items-center mt-2">
-                        <p class="text-green-700 font-bold">
+                        <p class="text-dark-100 font-bold">
                             <span class="line-through text-red-700">P<?php echo htmlspecialchars($rowDis['ORIGINAL_PRICE']); ?></span>
                             &nbsp;P<?php echo htmlspecialchars($rowDis['DISCOUNTED_PRICE']); ?>
                         </p>
@@ -95,36 +95,29 @@ if (!isset($_SESSION['email'])) {
 
         <!--Featured Product part with looped grid-->
         <h2 id="FeaturedProducts" class="font-sans text-[30px] mt-10">Featured Products</h2>
-        <div class="w-full flex flex-wrap gap-13 justify-start items-start">
+        <div class="w-full flex flex-wrap gap-15 justify-start items-start">
 
             <?php while ($row = $getFeatured->fetch_assoc()) { ?>
-            <div class="relative shadow-xl w-[300px] h-80 bg-cover hover:scale-105 transition-transform duration-300"
-                style="background-image: url('../<?php echo htmlspecialchars($row['ImgURL']); ?>');">
-            
-                <!-- Dark overlay -->
-                <div class="absolute inset-0 bg-black opacity-20 rounded-md"></div>
-                
-                <!-- Card content -->
-                <div class="relative z-10 flex flex-col justify-end h-full p-4 text-white">
-                    <div class="flex items-end justify-between">
-                        <h2 class="uppercase w-fit font-semibold"><?php echo htmlspecialchars($row['NAME']); ?></h2>
-                        <p class="text-sm">Stocks: <?php echo htmlspecialchars($row['STACK_QUANTITY']); ?></p>
-                    </div>
-                    <div class="flex justify-between items-center mt-2">
-                        <p class="text-green-300 font-semibold">P<?php echo htmlspecialchars($row['PRICE']); ?></p>
-                        <button 
-                            class="showaddCart w-20 bg-[#1E1E1E] text-white rounded-lg px-2 py-1 hover:cursor-pointer"
-                            data-name="<?php echo htmlspecialchars($row['NAME']); ?>"
-                            data-price="<?php echo htmlspecialchars($row['PRICE']); ?>"
-                            data-stock="<?php echo htmlspecialchars($row['STACK_QUANTITY']); ?>"
-                            data-id="<?php echo htmlspecialchars($row['PRODUCT_ID']); ?>"
-                        >
-                            ADD
-                        </button>
+            <button class="showaddCart relative w-[300px] h-80 hover:shadow-xl rounded-xl cursor-pointer"
+                data-name="<?php echo htmlspecialchars($row['NAME']); ?>"
+                data-price="<?php echo htmlspecialchars($row['PRICE']); ?>"
+                data-stock="<?php echo htmlspecialchars($row['STACK_QUANTITY']); ?>"
+                data-id="<?php echo htmlspecialchars($row['PRODUCT_ID']); ?>">
 
+                <img class="place-self-center rounded-md my-3 w-[280px] h-50 bg-cover" src="../<?php echo htmlspecialchars($row['ImgURL']);
+                 ?>" alt="ProductImage">
+
+                <!-- Card content -->
+                <div class="relative px-3 z-10 flex flex-col justify-end text-dark">
+                    <div class="flex items-end justify-between">
+                        <h2 class="uppercase text-dark-900 text-xl w-fit font-semibold"><?php echo htmlspecialchars($row['NAME']); ?></h2>
+                    </div>
+                    <div class="flex justify-start gap-3 items-center mt-2">
+                        <p class="text-gray-500">P<?php echo htmlspecialchars($row['PRICE']); ?></p>
+                        <p class="text-sm text-gray-500">Stocks: <?php echo htmlspecialchars($row['STACK_QUANTITY']); ?></p>
                     </div>
                 </div>
-            </div>
+            </button>
             <?php } ?>
 
         </div>
