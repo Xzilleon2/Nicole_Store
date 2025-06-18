@@ -22,104 +22,62 @@ if (!isset($_SESSION['email'])) {
 <body>
     <?php include '../includes/Header.php'; ?>
 
-    <!--Main Div for the Body-->
-    <div class="flex flex-col justify-center w-full py-10 px-20 gap-5">
-
-        <!--Store Features and info-->
-        <div class="w-full flex flex-wrap justify-center gap-10">
-            <div id="StoreImageCard" class="border border-black rounded-2xl shadow-xl w-5xl h-80">
-
-                <div class="w-full h-full flex">
-                    <div class="p-5 w-full h-full flex flex-col justify-center items-center text-center">
-                        <h1 class="text-[40px] my-3 font-[Italiana] font-bold">
-                            Affordable<br>Products
-                        </h1>
-                        <p class="font-semibold text-xl">Discounted Prices</p> <br>
-                        <a href="#FeaturedProducts" class="bg-[#1E1E1E] rounded-full text-white w-[100px]
-                         h-8 flex items-center justify-center hover:cursor-pointer"> View</a>
-                    </div>
-                    <div class="hidden lg:block h-full w-[300px] border-l rounded-r-2xl rounded-l-[100px] bg-cover" 
-                     style="background-image: url('../assets/ProductImages/NicoleStoreIMG.jpg');">
-                    </div>
-                </div>
-
-            </div>
-
-            <div id="GCashImageCard" class="border border-black rounded-2xl shadow-xl w-[300px] h-80 bg-cover p-5 flex items-end text-sky-100"
-             style="background-image: url('../assets/ProductImages/payment.jpg');">
-                <h1 class="font-bold font-sans text-2xl hover:cursor-default">Payment <br> over the counter <br> made easy</h1>
-            </div>
+        <!-- Background Banner -->
+        <div class="relative bg-cover h-130" style="background-image: url('../assets/cover.jpg');">
         </div>
 
-        <!--Discounted Product part with looped grid-->
-        <h2 id="DiscountedProducts" class="font-sans text-[30px]">Discounted Products</h2>
-        <div class="w-full flex flex-wrap gap-13 justify-start items-start">
+        <!-- Overlapping Card Section -->
+        <div class="relative z-10 -mt-70 mb-20 px-4">
+            <div class="bg-white shadow-xl rounded-2xl p-6 max-w-6xl mx-auto flex flex-col justify-center">
+                <h2 class="text-2xl text-center font-bold mb-4">Products</h2>
 
-        <?php while ($rowDis = $getDiscounted->fetch_assoc()) { ?>
-            <div class="relative shadow-xl w-[300px] h-80 bg-cover hover:scale-105 transition-transform duration-300"
-                style="background-image: url('../<?php echo htmlspecialchars($rowDis['ImgURL']); ?>');">
+                <!--Featured Product part with looped grid-->
+                <div class="w-full flex flex-wrap gap-2 justify-start items-start">
 
-                <!-- Dark overlay -->
-                <div class="absolute inset-0 bg-black opacity-20 rounded-md"></div>
+                    <?php while ($row = $getFeatured->fetch_assoc()) { ?>
+                    <button class="showaddCart relative w-[350px] h-80 hover:shadow-xl rounded-xl cursor-pointer"
+                        data-name="<?php echo htmlspecialchars($row['NAME']); ?>"
+                        data-price="<?php echo htmlspecialchars($row['PRICE']); ?>"
+                        data-stock="<?php echo htmlspecialchars($row['STACK_QUANTITY']); ?>"
+                        data-id="<?php echo htmlspecialchars($row['PRODUCT_ID']); ?>">
 
-                <!-- Card content -->
-                <div class="relative z-10 flex flex-col justify-end h-full p-4 text-white">
-                    <h2 class="place-self-end text-green-700">
-                        <?php echo intval($rowDis['DISCOUNT_PERCENT'] * 100); ?>% OFF
-                    </h2>
-                    <div class="flex items-end justify-between">
-                        <h2 class="uppercase w-fit font-semibold"><?php echo htmlspecialchars($rowDis['NAME']); ?></h2>
-                        <p class="text-sm">Stocks: <?php echo htmlspecialchars($rowDis['STACK_QUANTITY']); ?></p>
-                    </div>
-                    <div class="flex justify-between items-center mt-2">
-                        <p class="text-dark-100 font-bold">
-                            <span class="line-through text-red-700">P<?php echo htmlspecialchars($rowDis['ORIGINAL_PRICE']); ?></span>
-                            &nbsp;P<?php echo htmlspecialchars($rowDis['DISCOUNTED_PRICE']); ?>
-                        </p>
-                        <button 
-                            class="showaddCart w-20 bg-[#1E1E1E] text-white rounded-lg px-2 py-1 hover:cursor-pointer"
-                            data-name="<?php echo htmlspecialchars($rowDis['NAME']); ?>"
-                            data-price="<?php echo htmlspecialchars($rowDis['DISCOUNTED_PRICE']); ?>"
-                            data-stock="<?php echo htmlspecialchars($rowDis['STACK_QUANTITY']); ?>"
-                            data-id="<?php echo htmlspecialchars($rowDis['PRODUCT_ID']); ?>"
-                        >
-                            ADD
-                        </button>
-                    </div>
+                        <img class="place-self-center rounded-md my-3 w-[330px] h-50 bg-cover" src="../<?php echo htmlspecialchars($row['ImgURL']);
+                            ?>" alt="ProductImage">
+
+                        <!-- Card content -->
+                        <div class="relative px-3 z-10 flex flex-col justify-end text-dark">
+                            <div class="flex items-end justify-between">
+                                <h2 class="uppercase text-dark-900 text-xl w-fit font-semibold"><?php echo htmlspecialchars($row['NAME']); ?></h2>
+                            </div>
+                            <div class="flex justify-start gap-3 items-center mt-2">
+                                <p class="text-gray-500">P<?php echo htmlspecialchars($row['PRICE']); ?></p>
+                                <p class="text-sm text-gray-500">Stocks: <?php echo htmlspecialchars($row['STACK_QUANTITY']); ?></p>
+                            </div>
+                        </div>
+                    </button>
+                    <?php } ?>
+
+                </div>
+
+                <!-- Pagination -->
+                <div class="flex justify-center mt-6 gap-2">
+                    <?php if ($page > 1): ?>
+                        <a href="?page=<?= $page - 1 ?>" class="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300">Previous</a>
+                    <?php endif; ?>
+
+                    <?php for ($i = 1; $i <= $totalPages; $i++): ?>
+                        <a href="?page=<?= $i ?>"
+                        class="px-4 py-2 rounded 
+                                <?= $i === $page ? 'bg-orange-400 text-white' : 'bg-gray-100 hover:bg-gray-200' ?>">
+                            <?= $i ?>
+                        </a>
+                    <?php endfor; ?>
+
+                    <?php if ($page < $totalPages): ?>
+                        <a href="?page=<?= $page + 1 ?>" class="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300">Next</a>
+                    <?php endif; ?>
                 </div>
             </div>
-        <?php } ?>
-
-
-        </div>
-
-        <!--Featured Product part with looped grid-->
-        <h2 id="FeaturedProducts" class="font-sans text-[30px] mt-10">Featured Products</h2>
-        <div class="w-full flex flex-wrap gap-15 justify-start items-start">
-
-            <?php while ($row = $getFeatured->fetch_assoc()) { ?>
-            <button class="showaddCart relative w-[300px] h-80 hover:shadow-xl rounded-xl cursor-pointer"
-                data-name="<?php echo htmlspecialchars($row['NAME']); ?>"
-                data-price="<?php echo htmlspecialchars($row['PRICE']); ?>"
-                data-stock="<?php echo htmlspecialchars($row['STACK_QUANTITY']); ?>"
-                data-id="<?php echo htmlspecialchars($row['PRODUCT_ID']); ?>">
-
-                <img class="place-self-center rounded-md my-3 w-[280px] h-50 bg-cover" src="../<?php echo htmlspecialchars($row['ImgURL']);
-                 ?>" alt="ProductImage">
-
-                <!-- Card content -->
-                <div class="relative px-3 z-10 flex flex-col justify-end text-dark">
-                    <div class="flex items-end justify-between">
-                        <h2 class="uppercase text-dark-900 text-xl w-fit font-semibold"><?php echo htmlspecialchars($row['NAME']); ?></h2>
-                    </div>
-                    <div class="flex justify-start gap-3 items-center mt-2">
-                        <p class="text-gray-500">P<?php echo htmlspecialchars($row['PRICE']); ?></p>
-                        <p class="text-sm text-gray-500">Stocks: <?php echo htmlspecialchars($row['STACK_QUANTITY']); ?></p>
-                    </div>
-                </div>
-            </button>
-            <?php } ?>
-
         </div>
 
     </div>

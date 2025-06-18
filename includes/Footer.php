@@ -1,4 +1,4 @@
-<div Class='w-full h-50 p-5 gap-15 flex items-center border bg-[#1E1E1E] text-white'>
+<div Class='w-full h-50 z-5 p-5 gap-15 flex items-center border bg-[#1E1E1E] text-white'>
     <div Class='w-fit'>
         <h2 Class='text-3xl'>About</h2> <br />
         <p>

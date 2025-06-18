@@ -33,7 +33,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['Sign_in'])) {
 
                 // Success: Redirect to the homepage
                 echo "<script>
-                    alert('Login Successful');
                     window.location.href = '../../frames/Homepage.php';
                     </script>";
                 exit();
