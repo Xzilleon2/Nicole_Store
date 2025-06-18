@@ -26,10 +26,10 @@
         <div Class='flex items-center gap-6 w-fit px-10'>
                 <div class="group relative h-fit w-fit flex flex-col justify-center p-1">
 
-                    <a class="rounded-full font-bold bg-blue-300 h-10 flex items-center justify-center w-[40px]" 
+                    <a class="rounded-full font-bold bg-gray-500 h-10 flex items-center justify-center w-[40px]" 
                      href="../frames/Dashboard.php"><?php echo $_SESSION['profname'] ?></a>
 
-                    <div class="absolute w-[160px] top-full left-[-60px] rounded-lg p-3 bg-white text-dark-100 shadow-md scale-y-0
+                    <div class="absolute w-[160px] z-10 top-full left-[-60px] rounded-lg p-3 bg-white text-dark-100 shadow-md scale-y-0
                     group-hover:scale-y-100 origin-top duration-200">
                         <a class="font-semibold px-1 my-1 w-full text-start cursor-pointer hover:text-gray-300 duration-300 rounded-md"
                         href="../Functions/Logout.php">Logout</a>

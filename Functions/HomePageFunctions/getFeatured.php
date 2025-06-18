@@ -2,7 +2,7 @@
 include __DIR__ . '../../../imports/DBConnection.php';
 
 // Set number of items per page
-$limit = 9;
+$limit = 6;
 
 // Get the current page or default to 1
 $page = isset($_GET['page']) && is_numeric($_GET['page']) ? (int) $_GET['page'] : 1;

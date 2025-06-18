@@ -30,6 +30,9 @@ if (!isset($_SESSION['email'])) {
         <div class="relative z-10 -mt-70 mb-20 px-4">
             <div class="bg-white shadow-xl rounded-2xl p-6 max-w-6xl mx-auto flex flex-col justify-center">
                 <h2 class="text-2xl text-center font-bold mb-4">Products</h2>
+                <div class="w-full h-8 flex justify-end items-center hover:cursor-pointer">
+                    <button class="cursor-pointer p-10"><img src="../assets/Icons/search.png" alt="Search Icon"></button>
+                </div>
 
                 <!--Featured Product part with looped grid-->
                 <div class="w-full flex flex-wrap gap-2 justify-start items-start">
