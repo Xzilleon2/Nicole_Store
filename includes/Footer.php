@@ -1,15 +1,8 @@
-<div Class='w-full h-50 p-5 gap-15 flex items-center border bg-[#1E1E1E] text-white'>
-    <div Class='w-fit'>
-        <h2 Class='text-3xl'>About</h2> <br />
-        <p>
-            Our shop offers the best quality products for affordable prices. <br /> We spend our best effort
-            to serve all of our valuable customers <br /> with the best services.
-        </p>
-    </div>
-    <div Class='w-fit'>
-        <h2 Class='text-3xl'>Contact</h2> <br />
-        <p Class='my-1'>09165568793</p>
-        <p Class='my-1'>NicoleStore@gmail.com</p>
-        <p Class='my-1'>Blk. 3 Lot 23 Forestall Road Cabantian Davao City</p> 
+<div Class='w-full h-40 z-5 p-5 flex justify-center items-center border bg-[#1E1E1E] text-white'>
+    <div Class='w-fit text-center'>
+        <a Class="mx-3 text-md font-bold hover:text-gray-400" href=""> Store Info </a>
+        <a Class="mx-3 text-md font-bold hover:text-gray-400" href=""> Terms and Services </a> 
+        <a Class="mx-3 text-md font-bold hover:text-gray-400" href=""> Store History </a> <br>
+        <p class="my-2 text-sm text-gray-200">Ever Building Roxas St. Davao City, Davao Del Sur</p>
     </div>
 </div>

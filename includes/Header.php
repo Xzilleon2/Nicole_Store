@@ -14,38 +14,31 @@
 </style>
 
 <!--Header Contents-->
-<div Class='w-full flex flex-col text-center justify-center items-center border-b-1 px-15 pb-5 '>
-    <div Class='flex w-fit px-10 gap-20'>
-        <div Class='flex justify-center items-center py-5'>
-            <a href="../frames/Homepage.php"><h1 Class='font-[Italiana] font-bold text-5xl'>Nicole's</h1></a>
+<div Class='w-full flex text-center justify-between border-b-1 px-15 '>
+    <div Class='flex justify-between w-full px-10'>
+        <div Class='flex justify-center items-center py-3 gap-3'>
+            <a href="../frames/Homepage.php"><h1 Class='font-serif font-bold text-3xl'>Logo</h1></a>
+            <div class="flex flex-col items-start">
+                <p class="font-serif font-bold text-xl">Stash</p>
+                <p>Slogan</p>
+            </div>
         </div>
-        <div Class='flex items-center gap-10 w-fit px-10'>
-            <form action="">
-                <div Class='border flex w-full md:w-3xl h-15 rounded-4xl px-5'>
-                    <input Class='w-full h-full focus:border-none outline-none' type="text" placeholder="Find more Products"/>
-                    <input class='hover:cursor-pointer' type="submit" value="Search"/>
+        <div Class='flex items-center gap-6 w-fit px-10'>
+                <div class="group relative h-fit w-fit flex flex-col justify-center p-1">
+
+                    <a class="rounded-full font-bold bg-gray-500 h-10 flex items-center justify-center w-[40px]" 
+                     href="../frames/Dashboard.php"><?php echo $_SESSION['profname'] ?></a>
+
+                    <div class="absolute w-[160px] z-10 top-full left-[-60px] rounded-lg p-3 bg-white text-dark-100 shadow-md scale-y-0
+                    group-hover:scale-y-100 origin-top duration-200">
+                        <a class="font-semibold px-1 my-1 w-full text-start cursor-pointer hover:text-gray-300 duration-300 rounded-md"
+                        href="../Functions/Logout.php">Logout</a>
+                    </div>
+
                 </div>
-            </form>
-            <a href="../frames/Dashboard.php">Profile</a>
-            <a href="../frames/Dashboard.php#CartTable"><img class="cursor-pointer hover:scale-150" src="../assets/Icons/cart.png" alt="cartIcon"></a>
+            <a href="../frames/Dashboard.php#CartTable"><img class="cursor-pointer hover:scale-150"
+             src="../assets/Icons/cart.png" alt="cartIcon"></a>
         </div>
-    </div>
-    <div Class='flex justify-center items-center gap-20 mt-3'>
-        <div class="group relative flex flex-col justify-center p-1">
-            <div class="cursor-pointer">
-                <span class="nav w-fit h-full flex"><img src="../assets/Icons/menu.png" alt="MenuIcon">Category</span>
-            </div>
-            <div class="absolute top-full right-0 rounded-lg shadow-md bg-[#1E1E1E] flex flex-col text-start gap-2 p-1 flex flex-col
-             text-white scale-y-0 py-2 group-hover:scale-y-100 origin-top duration-200">
-                <a class="hover:bg-[#3C3C3C] duration-300 rounded-xl p-2 w-full" href="" class="mx-5">Foods</a>
-                <a class="hover:bg-[#3C3C3C] duration-300 rounded-xl p-2 w-full" href="" class="mx-5">Drinks</a>
-                <a class="hover:bg-[#3C3C3C] duration-300 rounded-xl p-2 w-full" href="" class="mx-5">Cosmetics</a>
-                <a class="hover:bg-[#3C3C3C] duration-300 rounded-xl p-2 w-full" href="" class="mx-5">Essentials</a>
-                <a class="hover:bg-[#3C3C3C] duration-300 rounded-xl p-2 w-full" href="" class="mx-5">Ingredients</a>
-            </div>
-        </div>
-        <a class="nav" href="../frames/Homepage.php#DiscountedProduct">Discounts</a>
-        <a class="nav" href="../frames/Homepage.php#FeaturedProducts">Popular</a>
     </div>
 
 </div>

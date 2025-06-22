@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,8 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nicole Store</title>
     <?php
-      include './imports/extensions.php';
-      include './frames/modals/Signup.php';
+      include __DIR__ . '/imports/extensions.php';
+      include __DIR__ . '/frames/modals/Signup.php';
     ?>
 </head>
 <body>
@@ -15,7 +18,7 @@
       <div class='w-screen flex text-center justify-between border-b-1 px-10 pt-10 pb-5'>
 
           <h2 class='font-[Italiana] font-bold text-4xl'>
-            Nicole's
+            Stash
           </h2>
           <div id="registerBtn" class='flex border w-[100px] bg-white text-black p-2 text-center 
           justify-center rounded-2xl hover:bg-[#1E1E1E] cursor-pointer hover:text-white'>
@@ -29,7 +32,8 @@
           <div class='flex flex-col w-lg'>
 
             <p class='font-bold my-3'>Sign in to Continue</p>
-            <form action="" method='POST'>
+
+            <form action="./Functions/IndexFunctions/Authentication.php" method='POST'>
               <label htmlFor="email">Email Address</label> <br />
               <input class='border p-3 my-3 w-full rounded-md '
                type="email" name="email" required/> <br />
@@ -37,10 +41,16 @@
               <input class='border  p-3 my-3 w-full rounded-md '
                type="password" name="password" required /> <br />
 
+              <p class="mb-3 text-red-500"><?php if(isset($_SESSION['Logmessage'])){
+                      echo $_SESSION['Logmessage'];
+                      unset($_SESSION['Logmessage']);
+                  } ?>
+              </p>
+
               <div class='flex justify-between px-4 py-2'>
                 <div class='flex content-center'>
                   <input class='size-7 mx-2 accent-black' type="checkbox" name="checkbox"/>
-                  <p class='font-small text-black'>Stay signed in</p>
+                  <p class='font-small text-black'>Remember me</p>
                 </div>
                 <p class='text-[#464545] font-normal hover:text-[#1d1c1c]'>
                   <a href="">Forgot Password?</a>
@@ -48,7 +58,7 @@
               </div>
               <input class='bg-[#1E1E1E] text-white rounded-2xl w-full text-[20px] font-bold
               my-2 py-3  hover:bg-[#353434] cursor-pointer' 
-               type="submit" name="sign_in" value='Sign in' />
+               type="submit" name="Sign_in" value='Sign in' />
             </form>
 
           </div>  

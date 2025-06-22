@@ -10,7 +10,7 @@
             
             <p class='mb-3'>Important Informations</p>
 
-            <form action="" method='POST'>
+            <form action="../Functions/DashboardFunctions/processCheckout.php" method='POST'>
                 <label htmlFor="customerName">Customer Name</label> <br />
                 <input class='border rounded-md w-full my-2 p-2' type="text" name='customerName'
                 disabled=""/> <br/>
@@ -18,13 +18,15 @@
                 <input class='border rounded-md w-full my-2 p-2' type="text" name='TotalPrice' 
                 disabled=""/> <br/>
                 <label htmlFor="ContactNumber">Contact Number</label> <br/>
-                <input class='border rounded-md w-full my-2 p-2' type="text" name='ContactNumber' 
-                disabled=""/> <br/>
+                <input class='border rounded-md w-full my-2 p-2' type="text" name='ContactNumber' value="<?php echo $_SESSION['Contact_Number']; ?>"
+                disabled="" /> <br/>
+                <input type="hidden" name="selected_ids" value="">
+                <input type="hidden" name="user_id" value="<?php echo $_SESSION['user_id'];?>">
                 <p clas="text-justify">
                      Pay at the counter. Your order is reserved for 24 hours. Check your Checkout History for the reservation code.
                 </p> <br/>
                 <input class='bg-[#1E1E1E] text-white border rounded-md w-full p-2 
-                hover:bg-[#353434] cursor-pointer' type="submit" name='RegisterProduct' value="Done"/>
+                hover:bg-[#353434] cursor-pointer' type="submit" name='RegisterOrder' value="Done"/>
             </form>
 
         </div>
